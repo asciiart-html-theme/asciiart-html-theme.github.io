@@ -1,0 +1,7 @@
+origin: asciiart-html-theme/asciiart-html-theme.github.io
+statements:
+  - subjects:
+      - repo:asciiart-html-theme/asciiart:**
+    permissions:
+      contents: write
+      pull-requests: write
