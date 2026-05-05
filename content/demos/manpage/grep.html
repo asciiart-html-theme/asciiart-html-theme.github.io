@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsciiArt Theme - Manpage content demo</title>
+
+  <!-- SCSS compiled CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+</head>
+<body>
+  
+  <header class="banner">
+   <pre>
+  ___           _ _  ___       _   
+ / _ \         (_|_)/ _ \     | |  
+/ /_\ \___  ___ _ _/ /_\ \_ __| |_ 
+|  _  / __|/ __| | |  _  | '__| __|
+| | | \__ \ (__| | | | | | |  | |_ 
+\_| |_/___/\___|_|_\_| |_/_|   \__|
+    </pre>
+</header>
+
+  <nav class="main-nav">
+    <a href="/layouts">&lt; Back to Content types</a>
+    <a href="/content/demos/manpage/grep.html">grep Example</a>
+    <a href="/content/demos/manpage/tar.html">tar example</a>
+  </nav>
+
+
+  <main>
+    
+    <article class="manpage">
+  <h1>GREP(1)</h1>
+
+  <section>
+    <h2>NAME</h2>
+    <p><code>grep</code> - print lines that match patterns</p>
+  </section>
+
+  <section>
+    <h2>SYNOPSIS</h2>
+    <pre class="synopsis"><code>grep [<var>OPTIONS</var>] <var>PATTERN</var> [<var>FILE</var>...]</code></pre>
+  </section>
+
+  <section>
+    <h2>DESCRIPTION</h2>
+    <p>
+      <code>grep</code> searches input files for lines that match a given pattern.
+      By default, it prints the matching lines to standard output.
+    </p>
+    <p>
+      Patterns are interpreted as basic regular expressions unless otherwise specified.
+    </p>
+  </section>
+
+  <section class="options">
+    <h2>OPTIONS</h2>
+    <dl>
+        <dt>
+        <code>-i</code>, <code>--ignore-case</code>
+        </dt>
+        <dd>Ignore case distinctions in patterns and input data.</dd>
+
+        <dt>
+        <code>-r</code>, <code>--recursive</code>
+        </dt>
+        <dd>Read all files under each directory recursively.</dd>
+
+        <dt>
+        <code>-n</code>
+        </dt>
+        <dd>Prefix each line of output with the line number.</dd>
+
+        <dt>
+        <code>-v</code>, <code>--invert-match</code>
+        </dt>
+        <dd>Select non-matching lines.</dd>
+
+        <dt>
+        <code>-c</code>, <code>--count</code>
+        </dt>
+        <dd>Print only a count of matching lines per file.</dd>
+
+        <dt>
+        <code>-l</code>
+        </dt>
+        <dd>Print only names of files with matches.</dd>
+    </dl>
+    </section>
+
+  <section>
+    <h2>EXAMPLES</h2>
+    <pre class="margin">
+# Search for "error" in a file
+grep "error" logfile.txt
+
+# Case-insensitive search
+grep -i "warning" logfile.txt
+
+# Recursive search in a directory
+grep -r "TODO" ./src
+
+# Show line numbers
+grep -n "main" program.c
+    </pre>
+  </section>
+
+  <section>
+    <h2>EXIT STATUS</h2>
+    <p>
+      0 if a match is found, 1 if no matches are found, and 2 if an error occurred.
+    </p>
+  </section>
+
+  <section>
+    <h2>SEE ALSO</h2>
+    <p><code>egrep</code>, <code>fgrep</code>, <code>sed</code>, <code>awk</code></p>
+  </section>
+
+  <section>
+    <h2>AUTHOR</h2>
+    <p>Originally written by GNU Project contributors.</p>
+  </section>
+</article>
+
+  </main>
+
+  
+</body>
+</html>

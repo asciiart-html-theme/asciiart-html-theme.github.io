@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsciiArt Theme - Setup</title>
+
+  <!-- SCSS compiled CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/javascript" src="/js/asciiart.min.js"></script>
+  <script type="application/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      new AsciiartTheme.Sidebar("#sidebar");
+    });      
+  </script>
+  
+    <script type="application/javascript" src="/js/asciiart.min.js"></script>
+    <script type="application/javascript">
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize the Sidebar component
+            new AsciiartTheme.Sidebar("#sidebar");
+            new AsciiartTheme.Treemenu(".treemenu");
+            AsciiartTheme.autoinit.codewrapper()
+        });
+    </script>
+
+</head>
+<body class="sidebar-layout">
+  <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
+    <button class="button-close" data-control-element="#sidebar"></button>
+    
+  <header class="banner">
+   <pre>
+  ___           _ _  ___       _   
+ / _ \         (_|_)/ _ \     | |  
+/ /_\ \___  ___ _ _/ /_\ \_ __| |_ 
+|  _  / __|/ __| | |  _  | '__| __|
+| | | \__ \ (__| | | | | | |  | |_ 
+\_| |_/___/\___|_|_\_| |_/_|   \__|
+    </pre>
+</header>
+
+
+
+    <aside>
+      <nav aria-label="Sidebar navigation">
+        
+<ul class="treemenu">
+    <li data-visible="true">
+        <button aria-expanded="false">Setup And Usage</button>
+        <ul>
+            <li><a href="#cdn">Using CDN</a></li>
+            <li><a href="#npm">Using NPM</a></li>
+        </ul>
+    </li>
+    <li><a href="#sass">Using SaaS</a></li>
+</ul>
+
+      </nav>
+    </aside>
+
+    
+    <footer>
+      Copyright Dimitrios Desyllas
+    </footer>
+
+  </div>
+
+  <div class="main-wrapper">
+    <div class="nav-wrapper sticky-top">
+        <div class="lead">
+          <button role="button" 
+            class="button-expand button-toggle" 
+            data-control-element="#sidebar"
+          ></button>
+        </div>
+        <nav class="main-nav">
+  <a href="/" class="">Index</a>
+  <a href="/setup.html" class="active">Setup</a>
+  <a href="/layouts" class="">Page types &amp; Layouts</a>
+  <a href="/components.html" class="">Visual Components &amp; CSS classes</a>
+</nav>
+    </div>
+
+    <main>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="setup">
+    <h1>Setup And Usage</h1>
+    <p>Theme ships both UJS and css using a CDN. Either classic or browser module supported:</p>
+    <article  id="cdn">
+        <h2>Using CDN</h2>
+        <div class="code-wrapper">
+            <div>
+                <h5>Html</h5>
+                <div class="tab-button-container">
+                    <button class="btn-tab" aria-selected="true" aria-controls="#cdn-setup-classic">Classic</button>
+                    <button class="btn-tab" aria-controls="#cdn-setup-module">Browser Module</button>
+                </div>
+                <button class="copy">COPY</button>
+            </div>
+            <pre id="cdn-setup-classic"><code> &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
+
+&lt;script src=&quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- initialize stuff here --&gt;</code></pre>
+            <pre id="cdn-setup-module"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
+
+&lt;script type=&quot;module&quot;&gt;
+
+import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciiart.esm.min.js&quot;
+// Look upon /components.html on how each module can be initialized
+&lt;/script&gt; </code></pre>
+        </div>
+    </article>
+    <article id="npm">
+        <h2>Using Npm</h2>
+        <p>Theme is also shipped via NPM so you can import and use it into your own project as well:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>Console</h5>
+            </div>
+            <pre><code>npm install @pc_magas/asciiart</code></pre>
+        </div>
+        <h3>Javascript Usage</h3>
+        <p>After installing the package you can import the minified javascript directly into youer html:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>JS/HTML</h5>
+                <div class="tab-button-container">
+                    <button class="btn-tab" aria-selected="true" aria-controls="#npm-use-classic">Classic</button>
+                    <button class="btn-tab" aria-controls="#npm-use-module">Browser Module</button>
+                </div>
+                <button class="copy">COPY</button>
+            </div>
+            <pre id="npm-use-classic"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/@pc_magas/asciiart/dist/asciiart.css&quot;/&gt;
+
+&lt;script src=&quot;./node_modules/@pc_magas/asciiart/dist/asciiart.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+            <pre id="npm-use-module"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/node_modules/@pc_magas/asciiart/dist/asciiart.css&quot;/&gt;
+&lt;script type=&quot;module&quot; src=&quot;&quot;&gt;
+    import {autoinit} from &quot;/node_modules/@pc_magas/asciiart/dist/asciiart.esm.min.js&quot;
+    // Look upon /components.html on how each module can be initialized
+&lt;/script&gt;</code></pre>
+        </div>
+        <p>Or use a bundler instead:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>JS</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>import {autoinit} from @pc_magas/asciiart
+    // Init here look modules.html for more info</code></pre>
+        </div>
+        <p>Css is loaded upon Html using a <code>&lt;link&gt;</code> tag:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>HTML/CSS</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>&lt;link rel="stylesheet" href="./node_modules/@pc_magas/asciiart/dist/asciiart.css"/ &gt;</code></pre>
+        </div>
+    </article>
+</section>
+
+
+
+<section id="sass">
+    <h2>Using SaaS</h2>
+    <p>Theme also ships sass where you can use it into your project as well:</p>
+    <div class="code-wrapper">
+            <div>
+                <h5>SASS</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>@use "@pc_magas/asciiart/src/scss/style";
+
+// Modifications here</code></pre>
+        </div>
+</section>
+
+
+    </main>
+  </div>
+</body>
+</html>

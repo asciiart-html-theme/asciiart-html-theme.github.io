@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsciiArt Theme - Layout Documentation</title>
+
+  <!-- SCSS compiled CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/javascript" src="/js/asciiart.min.js"></script>
+  <script type="application/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      new AsciiartTheme.Sidebar("#sidebar");
+    });      
+  </script>
+  
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            AsciiartTheme.autoinit.codewrapper()
+            AsciiartTheme.autoinit.treemenu()                
+        })
+    </script>
+
+</head>
+<body class="sidebar-layout">
+  <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
+    <button class="button-close" data-control-element="#sidebar"></button>
+    
+  <header class="banner">
+   <pre>
+  ___           _ _  ___       _   
+ / _ \         (_|_)/ _ \     | |  
+/ /_\ \___  ___ _ _/ /_\ \_ __| |_ 
+|  _  / __|/ __| | |  _  | '__| __|
+| | | \__ \ (__| | | | | | |  | |_ 
+\_| |_/___/\___|_|_\_| |_/_|   \__|
+    </pre>
+</header>
+
+
+
+    <aside>
+      <nav aria-label="Sidebar navigation">
+        
+<ul class="treemenu">
+    <li><a href="">About</a></li>
+    <li data-visible="true">
+        <button aria-expanded="false">Layouts</button>
+        <ul>
+            <li><a href="#no-sidebar">No Sidebar</a></li>
+            <li><a href="#full">Sidebar Full</a></li>
+            <li><a href="#base-sidebar">Sidebar upon content</a></li>
+        </ul>
+    </li>
+    <li>
+        <button aria-expanded="false">Content Types</button>
+        <ul>
+            <li><a href="#article">Article &amp; nomal text</a></li>
+            <li><a href="#manpage">Unix Manpage</a></li>
+        </ul>
+    </li>
+</ul>
+
+      </nav>
+    </aside>
+
+    
+    <footer>
+      Copyright Dimitrios Desyllas
+    </footer>
+
+  </div>
+
+  <div class="main-wrapper">
+    <div class="nav-wrapper sticky-top">
+        <div class="lead">
+          <button role="button" 
+            class="button-expand button-toggle" 
+            data-control-element="#sidebar"
+          ></button>
+        </div>
+        <nav class="main-nav">
+  <a href="/" class="">Index</a>
+  <a href="/setup.html" class="">Setup</a>
+  <a href="/layouts" class="active">Page types &amp; Layouts</a>
+  <a href="/components.html" class="">Visual Components &amp; CSS classes</a>
+</nav>
+    </div>
+
+    <main>
+        
+
+<section id="about">
+    <h1>About</h1>
+    <p>
+        The AsciiArt theme supports three primary layouts:
+    </p>
+    <ul>
+        <li>No Sidebar <a href="/layouts/demos/no-sidebar.html" class="button" target="_blank">Demo</a></li>
+        <li>Sidebar Full – Sidebar with header upon aside. <a href="/layouts/demos/sidebar-full.html" class="button" target="_blank">Demo</a></li>
+        <li>Sidebar upon content <a href="/layouts/demos/base-sidebar.html" class="button" target="_blank">Demo</a></li>
+    </ul>
+</section>
+
+
+
+
+
+<section id="no-sidebar">
+    <h1>No sidebar</h1>
+    <p>A minimalist, single-column layout focused entirely on content. Ideal for landing pages, simple articles, or documentation where a sidebar is unnecessary.</p>
+    <h2>Html Example</h2>
+    <p>Using this content you can generate the most basic html.</p>
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML Code</h5>
+            <a href="/layouts/demos/no-sidebar.html" class="button" target="_blank">Preview</a>
+            <button class="copy">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;AsciiArt Theme - No sidebar demo&lt;/title&gt;
+
+  &lt;!-- SCSS compiled CSS --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
+  
+&lt;/head&gt;
+&lt;body&gt;
+  
+  &lt;header class=&quot;banner&quot;&gt;
+   &lt;pre&gt;
+  ___           _ _  ___       _   
+ / _ &#92;         (_|_)/ _ &#92;     | |  
+/ /_&#92; &#92;___  ___ _ _/ /_&#92; &#92;_ __| |_ 
+|  _  / __|/ __| | |  _  | &#39;__| __|
+| | | &#92;__ &#92; (__| | | | | | |  | |_ 
+&#92;_| |_/___/&#92;___|_|_&#92;_| |_/_|   &#92;__|
+    &lt;/pre&gt;
+&lt;/header&gt;
+
+
+
+  &lt;main&gt;
+    
+    &lt;!-- Main content place text, forms or anything else here --&gt;
+    &lt;section&gt;
+    &lt;h1&gt;Article 1&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 2&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 3&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+
+&lt;section&gt;
+    &lt;h1&gt;Article 4&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 5&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+  &lt;/main&gt;
+
+  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <p>As you notice you need to include the css file. No javascript required.</p>
+    <div class="code-wrapper">
+        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <pre><code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section id="full">
+    <h1>Sidebar Full Layout</h1>
+    <p>
+        A comprehensive 'Application-style' layout. The sidebar occupies the full height of the viewport on the left, while the navigation and content scale responsively on the right.
+    </p>
+    <p>
+        Upon small screen or upon window resizing sidebar moves offcanvas allowing the user to focus on content.
+    </p>
+    <h2>HTML Example</h2>
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML Code</h5>
+            <a href="/layouts/demos/sidebar-full.html" class="button" target="_blank">Preview</a>
+            <button class="copy">Copy</button>
+        </div>
+        <pre><code>
+    
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Default Title&lt;/title&gt;
+
+  &lt;!-- SCSS compiled CSS --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
+  &lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;application/javascript&quot;&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+      new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });      
+  &lt;/script&gt;
+  
+&lt;/head&gt;
+&lt;body class=&quot;sidebar-layout&quot;&gt;
+  &lt;div id=&quot;sidebar&quot; class=&quot;aside-wrapper-fullheight bellow-nav&quot;&gt;
+    &lt;button class=&quot;button-close&quot; data-control-element=&quot;#sidebar&quot;&gt;&lt;/button&gt;
+    
+
+    &lt;aside&gt;
+      &lt;nav aria-label=&quot;Sidebar navigation&quot;&gt;
+        
+Sidebar content Here could place menus or navigation links.
+
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+
+    
+  &lt;/div&gt;
+
+  &lt;div class=&quot;main-wrapper&quot;&gt;
+    &lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
+        &lt;div class=&quot;lead&quot;&gt;
+          &lt;button role=&quot;button&quot; 
+            class=&quot;button-expand button-toggle&quot; 
+            data-control-element=&quot;#sidebar&quot;
+          &gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;nav class=&quot;main-nav&quot;&gt;
+  &lt;a href=&quot;/&quot; class=&quot;&quot;&gt;Index&lt;/a&gt;
+  &lt;a href=&quot;/setup.html&quot; class=&quot;&quot;&gt;Setup&lt;/a&gt;
+  &lt;a href=&quot;/layouts&quot; class=&quot;active&quot;&gt;Page types &amp;amp; Layouts&lt;/a&gt;
+  &lt;a href=&quot;/components.html&quot; class=&quot;&quot;&gt;Visual Components &amp;amp; CSS classes&lt;/a&gt;
+&lt;/nav&gt;
+    &lt;/div&gt;
+
+    &lt;main&gt;
+        
+    &lt;!-- Main content place text, forms or anything else here --&gt;
+    &lt;section&gt;
+    &lt;h1&gt;Article 1&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 2&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 3&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+
+&lt;section&gt;
+    &lt;h1&gt;Article 4&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 5&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </div>
+    <h2>CSS</h2>
+    <p>
+        To use this layout, first include the theme's CSS:
+    </p>
+    <div class="code-wrapper">
+        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <pre><code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+    </div>
+    <h2>Javascriupt</h2>
+    <p>
+        To keep the theme lightweight and modular, components do not auto-initialize. You must instantiate the Sidebar manually after the DOM has loaded:
+    </p>
+    <div class="code-wrapper">
+        <div><h5>JavaScript</h5>
+            <div class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="#esm">ESM</button>
+            </div>
+            <button class="copy">Copy</button>
+        </div>
+        <pre id="js"><code>
+&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;application/javascript&quot;&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar component
+        new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+        <pre id="esm"><code>
+&lt;script type=&quot;component&quot;&gt;
+    import { Sidebar } from &quot;js/asciiart.esm.min.js&quot;;
+
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar using ES6 module
+        new Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<section id="base-sidebar">
+    <h1>Sidebar upon content</h1>
+    <p>An extention of no-sidebar layout is to place underneath the main navigation a sidebar. This is usefull for placing a secondary navigation upon main content.</p>
+    <p>When browser window shinks it becomes hidden allowing you to focus upon main content.</p>
+    <h2>Html</h2>
+    <p>Using this content you can generate the most basic html.</p>
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML Code</h5>
+            <a href="/layouts/demos/base-sidebar.html" class="button" target="_blank">Preview</a>
+            <button class="copy">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Aciiiart Theme Demo&lt;/title&gt;
+
+  &lt;!-- SCSS compiled CSS --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
+  &lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;application/javascript&quot;&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+      new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });      
+  &lt;/script&gt;
+  
+    
+
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;top-left-responsive&quot;&gt;
+     &lt;button role=&quot;button&quot; 
+        class=&quot;button-expand button-toggle&quot; 
+        data-control-element=&quot;#sidebar&quot;
+      &gt;&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;header&gt;
+    
+  &lt;header class=&quot;banner&quot;&gt;
+   &lt;pre&gt;
+  ___           _ _  ___       _   
+ / _ &#92;         (_|_)/ _ &#92;     | |  
+/ /_&#92; &#92;___  ___ _ _/ /_&#92; &#92;_ __| |_ 
+|  _  / __|/ __| | |  _  | &#39;__| __|
+| | | &#92;__ &#92; (__| | | | | | |  | |_ 
+&#92;_| |_/___/&#92;___|_|_&#92;_| |_/_|   &#92;__|
+    &lt;/pre&gt;
+&lt;/header&gt;
+
+
+  &lt;/header&gt;
+
+  &lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
+    
+    &lt;nav class=&quot;main-nav&quot;&gt;
+  &lt;a href=&quot;#&quot;&gt;Index&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;Page&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;Another page&lt;/a&gt;
+  &lt;a href=&quot;#&quot;&gt;Yet another page&lt;/a&gt;
+&lt;/nav&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class=&quot;sidebar-layout&quot;&gt;
+    &lt;div class=&quot;aside-wrapper&quot; id=&quot;sidebar&quot;&gt;
+      &lt;button class=&quot;button-close&quot; data-control-element=&quot;#sidebar&quot;&gt;&lt;/button&gt;
+      &lt;aside&gt;
+        &lt;nav aria-label=&quot;Sidebar navigation&quot;&gt;
+            
+Sidebar content Here could place menus or navigation links.
+
+        &lt;/nav&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;main-wrapper&quot;&gt;
+      &lt;main&gt;
+        
+    &lt;!-- Main content place text, forms or anything else here --&gt;
+    &lt;section&gt;
+    &lt;h1&gt;Article 1&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 2&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 3&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+
+&lt;section&gt;
+    &lt;h1&gt;Article 4&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 5&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+      &lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+    <h2>CSS</h2>
+    <p>As you notice you need to include the css file.</p>
+    <div class="code-wrapper">
+        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <pre><code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
+</code></pre>
+    </div>
+    <h2>Javascript</h2>
+    <p>Furthermore you need to include the theme's javascript file and initialize the sidebar.<br>To keep the theme lightweight and modular, components do not auto-initialize. You must instantiate the Sidebar manually after the DOM has loaded.</p>
+    <div class="code-wrapper">
+        <div><h5>Javascript</h5>
+             <div class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#base-sidebar-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="#base-sidebar-esm">ESM</button>
+            </div>
+            <button class="copy">Copy</button>
+        </div>
+        <pre id="base-sidebar-js"><code>
+&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;application/javascript&quot;&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar component
+        new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+        <pre id="base-sidebar-esm"><code>
+&lt;script type=&quot;component&quot;&gt;
+    import { Sidebar } from &quot;js/asciiart.esm.min.js&quot;;
+
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar using ES6 module
+        new Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+    </div>
+</section>
+
+
+
+<section id="article">
+    <h1>Article &amp; nomal text</h1>
+    <p>Upon <code>&lt;main&gt;&lt;/main&gt;</code> the page content resides upon. You can use <code>&lt;article&gt;&lt;/article&gt;</code> and <code>&lt;article&gt;&lt;/article&gt;</code> tags to wrap the content:
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML Code</h5>
+            <button class="copy">Copy</button>
+        </div>
+        <pre><code>&lt;main&gt;
+    &lt;section&gt;
+        &lt;h1&gt;Title&lt;/h1&gt;
+        &lt;p&gt;Some content here...&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;article&gt;
+        &lt;h1&gt;Title 2&lt;/h1&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Some Content&lt;/h2&gt;
+            &lt;p&gt;Some content&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Some Content 2&lt;/h2&gt;
+            &lt;p&gt;Some content&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+    </div>
+    </p>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="manpage">
+    <h1>Unix Manpage</h1>
+    <article>
+        <h2>Minimal example</h2>
+        <p>
+            Some examples of manpages are:
+            <ul>
+                <li>grep <a href="/content/demos/manpage/grep.html" class="button" target="_blank">Demo</a></li>
+                <li>tar <a href="/content/demos/manpage/tar.html" class="button" target="_blank">Demo</a></li>
+            </ul>
+        </p>
+    </article>
+    <article>
+        <h2>Usage:</h2>    
+        <p>
+            Using class <code>manpage</code> you can style an article in a style that aids the readability of html representation of unix manpages.
+            A minimal example is:
+        </p>
+        <div class="code-wrapper">
+            <div>
+                <h5>html</h5>
+                <button class="copy">Copy</button>
+            </div>
+            <pre><code>&lt;article class=&quot;manpage&quot;&gt;
+  &lt;h1&gt;GREP(1)&lt;/h1&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;NAME&lt;/h2&gt;
+    &lt;p&gt;&lt;code&gt;grep&lt;/code&gt; - print lines that match patterns&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;SYNOPSIS&lt;/h2&gt;
+    &lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;grep [&lt;var&gt;OPTIONS&lt;/var&gt;] &lt;var&gt;PATTERN&lt;/var&gt; [&lt;var&gt;FILE&lt;/var&gt;...]&lt;/code&gt;&lt;/pre&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;DESCRIPTION&lt;/h2&gt;
+    &lt;p&gt;
+      &lt;code&gt;grep&lt;/code&gt; searches input files for lines that match a given pattern.
+      By default, it prints the matching lines to standard output.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Patterns are interpreted as basic regular expressions unless otherwise specified.
+    &lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;options&quot;&gt;
+    &lt;h2&gt;OPTIONS&lt;/h2&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;
+        &lt;code&gt;-i&lt;/code&gt;, &lt;code&gt;--ignore-case&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Ignore case distinctions in patterns and input data.&lt;/dd&gt;
+
+        &lt;dt&gt;
+        &lt;code&gt;-r&lt;/code&gt;, &lt;code&gt;--recursive&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Read all files under each directory recursively.&lt;/dd&gt;
+
+        &lt;dt&gt;
+        &lt;code&gt;-n&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Prefix each line of output with the line number.&lt;/dd&gt;
+
+        &lt;dt&gt;
+        &lt;code&gt;-v&lt;/code&gt;, &lt;code&gt;--invert-match&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Select non-matching lines.&lt;/dd&gt;
+
+        &lt;dt&gt;
+        &lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--count&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Print only a count of matching lines per file.&lt;/dd&gt;
+
+        &lt;dt&gt;
+        &lt;code&gt;-l&lt;/code&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;Print only names of files with matches.&lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;EXAMPLES&lt;/h2&gt;
+    &lt;pre class=&quot;margin&quot;&gt;
+# Search for &quot;error&quot; in a file
+grep &quot;error&quot; logfile.txt
+
+# Case-insensitive search
+grep -i &quot;warning&quot; logfile.txt
+
+# Recursive search in a directory
+grep -r &quot;TODO&quot; ./src
+
+# Show line numbers
+grep -n &quot;main&quot; program.c
+    &lt;/pre&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;EXIT STATUS&lt;/h2&gt;
+    &lt;p&gt;
+      0 if a match is found, 1 if no matches are found, and 2 if an error occurred.
+    &lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;SEE ALSO&lt;/h2&gt;
+    &lt;p&gt;&lt;code&gt;egrep&lt;/code&gt;, &lt;code&gt;fgrep&lt;/code&gt;, &lt;code&gt;sed&lt;/code&gt;, &lt;code&gt;awk&lt;/code&gt;&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;AUTHOR&lt;/h2&gt;
+    &lt;p&gt;Originally written by GNU Project contributors.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+        </div>
+    </article>
+    <article>
+        <h2>Synopsis</h2>
+        <p>Using class <code>.synopsis</code> you can format the xcomman line usage. Each argument could be annotated using <code>&lt;var&gt;...&lt;/var&gt;</code> html tag:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>html</h5>
+                <button class="copy">Copy</button>
+            </div>
+            <pre><code>&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;grep [&lt;var&gt;OPTIONS&lt;/var&gt;] &lt;var&gt;PATTERN&lt;/var&gt; [&lt;var&gt;FILE&lt;/var&gt;...]&lt;/code&gt;&lt;/pre&gt;</code></pre>
+        </div>
+        <p>You can use <code>&lt;pre&gt;...&lt;/pre&gt;</code> with <code>.synopsis</code> class multiple times. Also can be used in conjuction with <code>&lt;code&gt;...&lt;/code&gt;</code> tags:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>html</h5>
+                <button class="copy">Copy</button>
+            </div>
+            <pre><code>&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-c&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;FILE...&lt;/var&gt;]&lt;/pre&gt;
+&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-r&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;FILE...&lt;/var&gt;]&lt;/pre&gt;
+&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-t&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;MEMBER...&lt;/var&gt;]&lt;/pre&gt;
+&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-u&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;FILE...&lt;/var&gt;]&lt;/pre&gt;
+&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-x&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;MEMBER...&lt;/var&gt;]&lt;/pre&gt;</code></pre>
+        </div>
+
+    </article>
+    <article>
+        <h2>Command line argument description</h2>
+        <p>Upon manpage the comnmand line arguments use <code>&lt;dl&gt;&lt;/dl&gt;</code> html tags</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>html</h5>
+                <button class="copy">Copy</button>
+            </div>
+            <pre><code>&lt;dl&gt;
+  &lt;dt&gt;
+    &lt;code&gt;-A&lt;/code&gt;, &lt;code&gt;--catenate&lt;/code&gt;, &lt;code&gt;--concatenate&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Append archives to the end of another archive. The arguments are treated as
+    names of archives to append. All archives must be of the same format as the
+    target archive, otherwise the result may be unusable with non-GNU tar.
+    When multiple archives are given, members from all but the first are only
+    accessible when using &lt;code&gt;-i&lt;/code&gt; (&lt;code&gt;--ignore-zeros&lt;/code&gt;).
+    &lt;br&gt;&lt;br&gt;
+    Compressed archives cannot be concatenated.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-c&lt;/code&gt;, &lt;code&gt;--create&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Create a new archive. Arguments specify the files to include. Directories
+    are archived recursively unless &lt;code&gt;--no-recursion&lt;/code&gt; is used.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-d&lt;/code&gt;, &lt;code&gt;--diff&lt;/code&gt;, &lt;code&gt;--compare&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Find differences between the archive and the file system. Arguments are
+    optional and specify archive members to compare. If omitted, the current
+    directory is used.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;--delete&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Delete members from the archive. Arguments specify the names of members
+    to remove. At least one argument is required.
+    &lt;br&gt;&lt;br&gt;
+    This option does not work on compressed archives. No short option exists.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-r&lt;/code&gt;, &lt;code&gt;--append&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Append files to the end of an archive. Arguments behave the same as for
+    &lt;code&gt;-c&lt;/code&gt; (&lt;code&gt;--create&lt;/code&gt;).
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-t&lt;/code&gt;, &lt;code&gt;--list&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    List archive contents. Arguments are optional and specify which members
+    to list.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;--test-label&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Test the archive volume label and exit. Without arguments, prints the label
+    (if any) and exits with status 0. With arguments, compares the label against
+    each one and exits with 0 if a match is found, otherwise 1. No output is
+    shown unless used with &lt;code&gt;-v&lt;/code&gt; (&lt;code&gt;--verbose&lt;/code&gt;).
+    &lt;br&gt;&lt;br&gt;
+    No short option exists.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-u&lt;/code&gt;, &lt;code&gt;--update&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Append files that are newer than their archived versions. Arguments are the
+    same as for &lt;code&gt;-c&lt;/code&gt; and &lt;code&gt;-r&lt;/code&gt;. Newer files do not replace
+    old ones; they are appended, so multiple versions of the same file may exist.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    &lt;code&gt;-x&lt;/code&gt;, &lt;code&gt;--extract&lt;/code&gt;, &lt;code&gt;--get&lt;/code&gt;
+  &lt;/dt&gt;
+  &lt;dd&gt;
+    Extract files from an archive. Arguments are optional and specify which
+    members to extract.
+  &lt;/dd&gt;
+
+  &lt;dt&gt;</code></pre>
+        </div>
+    </article>
+
+</section>
+
+
+
+    </main>
+  </div>
+</body>
+</html>

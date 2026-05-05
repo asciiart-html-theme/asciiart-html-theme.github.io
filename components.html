@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AsciiArt Theme - Setup</title>
+
+  <!-- SCSS compiled CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/javascript" src="/js/asciiart.min.js"></script>
+  <script type="application/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      new AsciiartTheme.Sidebar("#sidebar");
+    });      
+  </script>
+  
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            AsciiartTheme.autoinit.codewrapper()
+            AsciiartTheme.autoinit.treemenu()                
+        })
+
+        function changeColor(button){
+            const value=button.value
+            console.log("Buttion CLicked",value)
+
+            const classes = [
+                "color-amber",
+                "color-green",
+                "color-dos",
+                "color-paper"
+            ]
+                
+            classes.forEach((className)=>document.querySelector("body").classList.remove(className))
+
+            const classMap = {
+                "blue":"color-dos",
+                "amber":"color-amber",
+                "green":"color-green",
+                "tone-down":"color-black-tone-down",
+                "paper":"color-paper"
+            }
+            console.log(classMap[value])
+            if(classMap[value]){
+                document.querySelector("body").classList.add(classMap[value])
+            }
+        }
+
+    </script>
+
+</head>
+<body class="sidebar-layout">
+  <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
+    <button class="button-close" data-control-element="#sidebar"></button>
+    
+  <header class="banner">
+   <pre>
+  ___           _ _  ___       _   
+ / _ \         (_|_)/ _ \     | |  
+/ /_\ \___  ___ _ _/ /_\ \_ __| |_ 
+|  _  / __|/ __| | |  _  | '__| __|
+| | | \__ \ (__| | | | | | |  | |_ 
+\_| |_/___/\___|_|_\_| |_/_|   \__|
+    </pre>
+</header>
+
+
+
+    <aside>
+      <nav aria-label="Sidebar navigation">
+        
+<ul class="treemenu">
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#tables">Tables</a></li>
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#dl">Description List</a></li>
+    <li><a href="#alerts">Alerts</a></li>
+    <li data-visible="true">
+        <button aria-expanded="false">Navbar</button>
+        <ul>
+            <li><a href="#navbar-basic">Basic Usage</a></li>
+            <li><a href="#navbar-sticky">Sticky Top</a></li>
+            <li><a href="#navbar-controls">Leading Elements</a></li>
+            <li><a href="#navbar-highlight">Highlight Item</a></li>
+        </ul>
+    </li>
+    <li><button aria-expanded="false">Codewrapper</button>
+        <ul>
+            <li><a href="#codewrapper-basic">Basic usage</a></li>
+            <li><a href="#codewrapper-tabs">Tabs</a></li>
+            <li><a href="#codewrapper-links">Links</a></li>
+        </ul>
+    </li>
+    <li>
+        <button aria-expanded="false">Treeviews</button>
+        <ul>
+            <li><a href="#tree">Simple tree</a></li>
+            <li><a href="#treemenu">Treemenu</a></li>
+        </ul>
+    </li>
+ 
+</ul>
+
+      </nav>
+    </aside>
+
+    
+    <footer>
+      Copyright Dimitrios Desyllas
+    </footer>
+
+  </div>
+
+  <div class="main-wrapper">
+    <div class="nav-wrapper sticky-top">
+        <div class="lead">
+          <button role="button" 
+            class="button-expand button-toggle" 
+            data-control-element="#sidebar"
+          ></button>
+        </div>
+        <nav class="main-nav">
+  <a href="/" class="">Index</a>
+  <a href="/setup.html" class="">Setup</a>
+  <a href="/layouts" class="">Page types &amp; Layouts</a>
+  <a href="/components.html" class="active">Visual Components &amp; CSS classes</a>
+</nav>
+    </div>
+
+    <main>
+        
+<section id="typography">
+<h1>Typograhpy</h1>
+    <article>
+        <h2>Headers</h2>
+        <div class="code-wrapper">
+            <pre>
+                <h1>h1. Header 1</h1>
+                <h2>h2. Header 2</h2>
+                <h3>h3. Header 3</h3>
+                <h4>h4. Header 4</h4>
+                <h5>h5. Header 5</h5>
+                <h6>h6. Header 6</h6>
+            </pre>
+        </div>
+    </article>
+    <article>
+        <h2>Paragraphs</h2>
+        <p>Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.</p>
+    </article>
+    <article>
+        <h2>Links</h2>
+        <p>This is a normal <a href="#">link</a></p>
+        <p> 
+            This is a link styled as button <a href="#" class="button">link</a><br>
+            Use class <code>button</code> to style it:
+            <div class="code-wrapper">
+                <pre><code>&lt;a href="#" class="button"&gt;link&lt;/a&gt;</code></pre>
+            </div>
+        </p>
+    </article>
+</section>
+
+<section id="tables">
+    <h1>Tables</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+                <td>Row 1 Data 3</td>
+                <td>Row 1 Data 4</td>
+            </tr>
+            <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+                <td>Row 2 Data 3</td>
+                <td>Row 2 Data 4</td>
+            </tr>
+            <tr>
+                <td>Row 3 Data 1</td>
+                <td>Row 3 Data 2</td>
+                <td>Row 3 Data 3</td>
+                <td>Row 3 Data 4</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+            <td>Footer 1</td>
+            <td>Footer 2</td>
+            <td>Footer 3</td>
+            <td>Footer 4</td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+
+
+
+
+
+
+<section id="dl">
+    <h1>Description List</h1>
+    <article>
+        <h2>Basic</h2>
+        <div>
+            
+<dl>
+    <dt>Apple</dt>
+    <dd>A red fruit rich in vitamins</dd>
+    <dt>Orange</dt>
+    <dd>Both a fruit and a color. As a fruit it is sually squeezed for its juice.</dd>
+    <dt>Banana</dt>
+    <dd>Yellow long fruit rich in potasium. It is sweet and most popular.</dd>
+</dl>
+
+        </div>
+    </article>
+    <article>
+        <h2>Inline</h2>
+        <div>
+            NaN
+        </div>
+        <p>Using class <code>.desc-columns</code> you can placer both <code>&lt;dt&gt;...&lt;/dt&gt;</code> into a single line with te following <code>&lt;dd&gt;...&lt;/dd&gt;</code>:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>Html</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>&lt;dl class=&quot;desc-columns&quot;&gt;
+    &lt;dt&gt;Apple&lt;/dt&gt;
+    &lt;dd&gt;A red fruit rich in vitamins&lt;/dd&gt;
+    &lt;dt&gt;Orange&lt;/dt&gt;
+    &lt;dd&gt;Both a fruit and a color. As a fruit it is sually squeezed for its juice.&lt;/dd&gt;
+    &lt;dt&gt;Banana&lt;/dt&gt;
+    &lt;dd&gt;Yellow long fruit rich in potasium. It is sweet and most popular.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        </div>
+    </article>
+</section>
+
+
+<section id="colors">
+    <h1>Colors</h1>
+    <p>Theme comes comes in color combinations consisting of 2 colors. Background color and text color.<br>
+        For each color there are classes started with <code>color-*</code> indicating which color is selected:
+        <table>
+            <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>CSS Class</th>
+                    <th>Background Color</th>
+                    <th>Frontend Color</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Default</td>
+                    <td>&lt;none&gt;</td>
+                    <td>rgb(0,0,0)</td>
+                    <td>rgb(220,217,217)</td>
+                    <td><button onclick="changeColor(this)" value="white">Change</button></td>
+                </tr>
+                <tr>
+                    <td>Green</td>
+                    <td><code>.color-green</code></td>
+                    <td>rgb(0,0,0)</td>
+                    <td>hsl(120 56.1% 50.5%)</td>
+                    <td><button onclick="changeColor(this)" value="green">Change</button></td>
+                </tr>
+                <tr>
+                    <td>Amber</td>
+                    <td><code>.color-amber</code></td>
+                    <td>rgb(0,0,0)</td>
+                    <td>hsl(40 70% 49.5%)</td>
+                    <td><button onclick="changeColor(this)" value="amber">Change</button></td>
+                </tr>
+                <tr>
+                    <td>Blue (DOS-Line, windows BSOD-like)</td>
+                    <td><code>.color-dos</code></td>
+                    <td>hsl(240 100% 33%)</td>
+                    <td>rgb(0,0,0)</td>
+                    <td><button onclick="changeColor(this)" value="blue">Change</button></td>
+                </tr>
+
+                <tr>
+                    <td>Paper</td>
+                    <td><code>.color-paper</code></td>
+                    <td>hsl(40 70% 49.5%)</td>
+                    <td>rgb(219,218,218)</td>
+                    <td><button onclick="changeColor(this)" value="paper">Change</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+</section>
+
+<section id="navbar">
+    <h1>Navbar</h1>
+    <article id="navbar-basic">
+        <h2>Basic usage</h2>
+        <p>Use for main navigation </p>
+        <div class="nav-wrapper" style="z-index:0;">
+            <nav class="main-nav">
+                <a href="#">Item 1</a>
+                <a href="#">Item 2</a>
+                <a href="#">Item 3</a>
+            </nav>
+        </div>
+        <p>Code:</p>
+        <pre class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <code>
+                &lt;div class="nav-wrapper"&gt;
+                    &lt;nav class="main-nav"&gt;
+                        &lt;a href="#"&gt;Item 1&lt;/a&gt;
+                        &lt;a href="#"&gt;Item 2&lt;/a&gt;
+                        &lt;a href="#"&gt;Item 3&lt;/a&gt;
+                    &lt;/nav&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
+    </article>
+    <article id="navbar-sticky">
+        <h2>Sticky Navbar</h2>
+        <p>If you want the navbar to stick on top of thew screen use <code>sticky-top</code> class:</p>
+        <div class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre>
+                <code>
+                    &lt;div class="nav-wrapper sticky-top"&gt;
+                        &lt;nav class="main-nav"&gt;
+                            &lt;a href="#"&gt;Item 1&lt;/a&gt;
+                            &lt;a href="#"&gt;Item 2&lt;/a&gt;
+                            &lt;a href="#"&gt;Item 3&lt;/a&gt;
+                        &lt;/nav&gt;
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </article>
+    <article id="navbar-controls">
+        <h2>Leading Elements</h2>
+        <p>You can use <code>lead</code> class in order to place buttons or icons in front of main navigation:</p>
+        <div class="nav-wrapper" style="z-index:0;">
+            <div class="lead"><span>*</span></div>
+            <nav class="main-nav">
+                <a href="#">Item 1</a>
+                <a href="#">Item 2</a>
+                <a href="#">Item 3</a>
+            </nav>
+        </div>
+         <div class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>
+&lt;div class="nav-wrapper sticky-top"&gt;
+    &lt;div class="lead"&gt;
+        &lt;button&gt;*&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;nav class="main-nav"&gt;
+        &lt;a href="#"&gt;Item 1&lt;/a&gt;
+        &lt;a href="#"&gt;Item 2&lt;/a&gt;
+        &lt;a href="#"&gt;Item 3&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/div&gt;
+            </code></pre>
+        </div>
+    </article>
+    <article id="navbar-highlight">
+        <h2>Highlight Item</h2>
+        <div class="nav-wrapper sticky-top" style="z-index:0;">
+            <nav class="main-nav">
+                <a class="active" href="#">Item 1</a>
+                <a href="#">Item 2</a>
+                <a href="#">Item 3</a>
+            </nav>
+        </div>
+        <p>Using the class <code>active</code> you can hilight an active element indicating current visited page:
+             <div class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>
+&lt;div class="nav-wrapper sticky-top"&gt;
+    &lt;nav class="main-nav"&gt;
+        &lt;a class="active" href="#"&gt;Item 1&lt;/a&gt;
+        &lt;a href="#"&gt;Item 2&lt;/a&gt;
+        &lt;a href="#"&gt;Item 3&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/div&gt;
+            </code></pre>
+        </div>
+        </p>
+    </article>
+</section>
+
+<section id="alerts">
+    <h1>Alerts</h1>
+    <article>
+    <h2>Alert Info</h2>
+    <p>Use this to notify user about an inportant information</p>
+    <div class="alert alert-info">
+        <i class="icon"></i>
+        Dear sir I am informing you about something....
+    </div><br>
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML</h5>
+            <button class="copy">COPY</button>
+        </div>
+        <pre>
+            <code>
+                &lt;div class="alert alert-info"&gt;
+                    &lt;i class="icon"&gt;&lt;/i&gt;
+                    Dear sir I am informing you about something....
+                &lt;/div&gt;
+            </code>
+        </pre>
+    </div>
+    </article>
+    <article>
+        <h2>Alert Notice</h2>
+        <p>Notify user about something that should be seriouly concerned or strongly to pay notice upon.</p>
+        <div class="alert alert-notice">
+            <i class="icon"></i>
+            You must pay attention on what you are doing....
+        </div><br>
+        <div class="code-wrapper">
+            <div>
+               <h5>HTML</h5>
+               <button class="copy">COPY</button>
+           </div>
+           <pre>
+               <code>
+                   &lt;div class="alert alert-notice"&gt;
+                       &lt;i class="icon"&gt;&lt;/i&gt;
+                       You must pay attention on what you are doing....
+                   &lt;/div&gt;
+               </code>
+           </pre>
+        </div>
+    </article>
+    <article>
+        <h2>Alert Stop</h2>
+        <p>Notify user about a prohibiting action.</p>
+        <div class="alert alert-stop">
+            <i class="icon"></i>
+            Stop doing do this....
+        </div><br>
+        <div class="code-wrapper">
+            <div>
+               <h5>HTML</h5>
+               <button class="copy">COPY</button>
+            </div>
+            <pre>
+                <code>
+                    &lt;div class="alert alert-stop"&gt;
+                        &lt;i class="icon"&gt;&lt;/i&gt;
+                        Stop doing do this....
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </article>
+    <article>
+        <h2>Alert warning</h2>
+        <p>Another way to ensure user to pay attention about something.</p>
+        <div class="alert alert-warning">
+            Oh snap this is serious!!
+        </div><br>
+        <div class="code-wrapper">
+            <div>
+               <h5>HTML</h5>
+               <button class="copy">COPY</button>
+            </div>
+            <pre>
+                <code>
+                    &lt;div class="alert alert-warning"&gt;
+                        Oh snap this is serious!!
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </article>
+    <article>
+        <h2>Alert Danger</h2>
+        <p>Notify user about a dangerous situation</p>
+        <h3>Blinking text</h3>
+        <div class="alert alert-danger">
+            Oh snap this is serious!!
+        </div><br>
+        <div class="code-wrapper">
+            <div>
+               <h5>HTML</h5>
+               <button class="copy">COPY</button>
+            </div>
+            <pre>
+                <code>
+                    &lt;div class="alert alert-danger"&gt;
+                        Oh snap this is serious!!
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+        <h3>Blinking Background</h3>
+         <div class="alert alert-danger2">
+            Oh snap this is serious!!
+        </div><br>
+        <div class="code-wrapper">
+            <div>
+               <h5>HTML</h5>
+               <button class="copy">COPY</button>
+            </div>
+            <pre>
+                <code>
+                    &lt;div class="alert alert-danger2"&gt;
+                        Oh snap this is serious!!
+                    &lt;/div&gt;
+                </code>
+            </pre>
+        </div>
+    </article>
+</section>
+<section id="codewrapper">
+    <h1>CodeWrapper</h1>
+    <article id="codewrapper-basic">
+    <h2>Basic usage</h2>
+    <p>If you want to place a piece of code into your documentation use:</p>
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML</h5>
+            <button class="copy">COPY</button>
+        </div>
+        <pre>
+            <code>
+&lt;div class="code-wrapper"&gt;
+    &lt;div&gt;
+        &lt;h5&gt;HTML&lt;/h5&gt;
+        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;pre&gt;
+        &lt;code&gt;
+            Piece of code here            
+        &lt;/code&gt;
+    &lt;/pre&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
+    </div>
+    <p>The component also need to initialize the copy buttons, both js and esm supported:
+    <div class="code-wrapper">
+        <div>
+            <h5>JS</h5>
+            <div class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#codewrapper-init-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="#codewrapper-init-esm">ESM</button>
+            </div>
+            <button class="copy">COPY</button>
+        </div>
+        <pre id="codewrapper-init-esm">
+            <code>
+&lt;script type=\"module\"&gt;
+    import { autoinit } from "/js/asciiart.esm.js"; 
+    document.addEventListener("DOMContentLoaded",function(){
+        autoinit.codewrapper()
+    })
+&lt;/script&gt;
+            </code>
+        </pre>
+        <pre id="codewrapper-init-js">
+            <code>
+&lt;script type="application/javascript" src="/js/asciiart.min.js&gt;&lt;/script&gt;
+&lt;script&gt;
+    document.addEventListener("DOMContentLoaded",function(){
+        AsciiartTheme.autoinit.codewrapper()
+    })
+&lt;/script&gt;
+            </code>
+        </pre>
+    </div>
+</p>
+    <p>Otherwise you can use the <code>CodeWrapper</code> class, ideal for a single element, both js and esm supported:
+    <div class="code-wrapper">
+        <div>
+            <h5>JS</h5>
+            <div class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#codewrapper-class-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="#codewrapper-class-esm">ESM</button>
+            </div>
+            <button class="copy">COPY</button>
+        </div>
+        <pre id="codewrapper-class-esm" class="tab-code">
+            <code>
+&lt;script type=\"module\"&gt;
+    import { CodeWrapper } from "/js/asciiart.esm.js"; 
+    document.addEventListener("DOMContentLoaded",function(){
+        new CodeWrapper("#mycontainer")
+    })
+&lt;/script&gt;
+            </code>
+        </pre>
+        <pre id="codewrapper-class-js" class="tab-code">
+            <code>
+&lt;script type="application/javascript" src="/js/asciiart.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    document.addEventListener("DOMContentLoaded",function(){
+        new AsciiartTheme.CodeWrapper("#mycontainer")
+    })
+&lt;/script&gt;
+            </code>
+        </pre>
+    </div>
+    </p>
+</article>
+<article id="codewrapper-tabs">
+    <h2>Tabs</h2>
+    <p>
+        In case thay you need to show variations (eg. on how could a package be installed) codewrapper supports tabs as well:
+        <div class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+        <pre>
+            <code>
+&lt;div class="code-wrapper"&gt;
+    &lt;div&gt;
+        &lt;h5&gt;Installation Instructions&lt;/h5&gt;
+        &lt;div class="tab-button-container"&gt;
+                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="#windows">Windows&lt;/button&gt;
+                &lt;button class="btn-tab" role="tab" aria-controls="#linux">Linux&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;pre id="windows"&gt;
+        &lt;code&gt;
+            windows installation            
+        &lt;/code&gt;
+    &lt;/pre&gt;
+    &lt;pre id="linux"&gt;
+        &lt;code&gt;
+            linux installation            
+        &lt;/code&gt;
+    &lt;/pre&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
+    </div>
+</p>
+<p>
+    Tabs can lead the title as well:
+    <div class="code-wrapper">
+        <div>
+            <h5>HTML</h5>
+            <button class="copy">COPY</button>
+        </div>
+        <pre>
+            <code>
+&lt;div class="code-wrapper"&gt;
+    &lt;div&gt;
+        &lt;div class="tab-button-container"&gt;
+                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="#windows">Windows&lt;/button&gt;
+                &lt;button class="btn-tab" role="tab" aria-controls="#linux">Linux&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;h5&gt;Installation Instructions&lt;/h5&gt;
+        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;pre id="windows"&gt;
+        &lt;code&gt;
+            windows installation            
+        &lt;/code&gt;
+    &lt;/pre&gt;
+    &lt;pre id="linux"&gt;
+        &lt;code&gt;
+            linux installation            
+        &lt;/code&gt;
+    &lt;/pre&gt;
+&lt;/div&gt;
+            </code>
+        </pre>
+    </div>
+</p>
+</article>
+<article id="#codewrapper-links">
+    <h2>Links</h2>
+    <p>
+        You can use the class <code>button</code> upon a link in case you want to add extra links eg. html preview links:
+        <div class="code-wrapper">
+            <div>
+                <h5>HTML</h5>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>
+&lt;div class="code-wrapper"&gt;
+    &lt;div&gt;
+        &lt;h5&gt;Demo&lt;/h5&gt;
+        &lt;a href="#"&gt;Preview&lt;a&gt;
+        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;pre&gt;
+        &lt;code&gt;
+            soime code here....  
+        &lt;/code&gt;
+    &lt;/pre&gt;
+&lt;/div&gt;
+            </code></pre>
+        </div>
+    </p>
+</article>
+</section>
+
+
+
+
+
+
+
+
+<section id="tree">
+    <h1>Simple Tree</h1>
+     <article>
+        <h2>Preview</h2>
+            
+<ul class="tree">
+                <li>Item</li>
+                <li>Item</li>
+                <li data-visible="true">
+                    <span>Item with nested Items</span>
+                    <ul>
+                        <li><span>Nested Item 1</span></li>
+                        <li><span>Nested Item with nested Items</span>
+                             <ul>
+                                <li>Nested Item 1</li>
+                                <li>Nested Item 2</li>
+                            </ul>
+                        </li>
+                        <li>Nested Item 3</li>
+                    </ul>
+                </li>
+            </ul>
+
+    </article>
+    <article>
+        <h2>Usage</h2>
+        <p>In case you want to simply display a list in a form of tree use <code>tree</code> class instead. Javascript ignores this class:
+         <div class="code-wrapper">
+                <div>
+                    <h5>HTML Code</h5>
+                    <button class="copy">Copy</button>
+                </div>
+                <pre><code>&lt;ul class=&quot;tree&quot;&gt;
+                &lt;li&gt;Item&lt;/li&gt;
+                &lt;li&gt;Item&lt;/li&gt;
+                &lt;li data-visible=&quot;true&quot;&gt;
+                    &lt;span&gt;Item with nested Items&lt;/span&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;span&gt;Nested Item 1&lt;/span&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;span&gt;Nested Item with nested Items&lt;/span&gt;
+                             &lt;ul&gt;
+                                &lt;li&gt;Nested Item 1&lt;/li&gt;
+                                &lt;li&gt;Nested Item 2&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Nested Item 3&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;</code></pre>
+            </div>    
+        </p>
+    </article>
+</section>
+
+<section id="treemenu">
+    <h1>Treemenu</h1>
+    <article>
+        <h2>Preview</h2>
+        <div>
+            
+<ul class="treemenu">
+                <li><a href="#">Typography</a></li>
+                <li><a href="#">Tables</a></li>
+                <li data-visible="true">
+                    <button aria-expanded="false">Navbar</button>
+                    <ul>
+                        <li><a href="#">Basic Usage</a></li>
+                        <li><a href="#">Sticky Top</a></li>
+                        <li><a href="#">Leading Elements</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Alerts</a></li>
+                <li><button aria-expanded="false">Codewrapper</button>
+                    <ul>
+                        <li><a href="#">Basic usage</a></li>
+                        <li><a href="#">Tabs</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Treemenu</a></li>
+            </ul>
+
+        </div>
+        
+    </article>
+    <article>
+        <h2>Usage</h2>
+        <p> Tree menu is an ideal way to represent navigation whilst retaining a nice, retro look. In order to work you need to initialize html:
+            <div class="code-wrapper">
+                <div>
+                    <h5>HTML Code</h5>
+                    <button class="copy">Copy</button>
+                </div>
+                <pre><code>&lt;ul class=&quot;treemenu&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Typography&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Tables&lt;/a&gt;&lt;/li&gt;
+                &lt;li data-visible=&quot;true&quot;&gt;
+                    &lt;button aria-expanded=&quot;false&quot;&gt;Navbar&lt;/button&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Basic Usage&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Sticky Top&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Leading Elements&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Alerts&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;button aria-expanded=&quot;false&quot;&gt;Codewrapper&lt;/button&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Basic usage&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Tabs&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Treemenu&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;</code></pre>
+            </div>    
+        </p>
+        <p>
+            Beyond html it also needs to be initialized via Javascript:
+             <div class="code-wrapper">
+                <div>
+                    <h5>JS Code</h5>
+                    <div class="tab-button-container">
+                        <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#treemenu-js">JS</button>
+                        <button class="btn-tab" role="tab" aria-controls="#treemenu-esm">ESM</button>
+                    </div>
+                    <button class="copy">Copy</button>
+                </div>
+                <pre id="treemenu-js"><code>&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;,function(){
+        AsciiartTheme.autoinit.treemenu()
+    })
+&lt;/script&gt;</code></pre>
+                <pre id="treemenu-esm"><code>&lt;script type=&quot;module&quot;&gt;
+    import { autoinit } from &quot;/js/asciiart.esm.js&quot;; 
+    document.addEventListener(&quot;DOMContentLoaded&quot;,function(){
+        autoinit.treemenu()
+    })
+&lt;/script&gt;</code></pre>
+            </div>    
+        </p>
+    </article>
+</section>
+
+
+    </main>
+  </div>
+</body>
+</html>
