@@ -15,8 +15,8 @@
     }
   };
   var l = class {
-    constructor(e, t = 1700) {
-      this.sidebar = r(e), this.breakpoint = t, this.init();
+    constructor(e) {
+      this.sidebar = r(e), this.breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue("--md-width"), this.breakpoint || (this.breakpoint = 1700), this.breakpoint = parseInt(this.breakpoint), this.init();
     }
     init() {
       window.addEventListener("resize", () => this.handleResize());
@@ -27,7 +27,7 @@
           return;
         }
         t.addEventListener("click", () => this.toggle(t));
-      });
+      }), this.updateButtons();
     }
     toggle(e) {
       let t = this.sidebar.checkVisibility();

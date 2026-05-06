@@ -135,16 +135,27 @@
     color: var(--color-fe) !important;
   }
 }
+:root {
+  --md-width: 1700px;
+}
+
 main {
   width: 80%;
   margin: auto;
   margin-bottom: 0.5rem;
 }
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 700px) {
   main {
     width: 98vw;
     padding-left: 3px;
     padding-right: 3px;
+  }
+}
+@media screen and (max-width: 600px) {
+  main {
+    width: 85vw;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -317,7 +328,7 @@ body.sidebar-layout {
 }
 @media screen and (max-width: 1700px) {
   .main-wrapper {
-    width: 100%;
+    width: 98%;
   }
 }
 
@@ -511,6 +522,12 @@ article *, section * {
   clear: both;
 }
 
+@media screen and (max-width: 700px) {
+  .sm-hidden {
+    display: none;
+  }
+}
+
 .banner {
   display: flex;
   flex-direction: column;
@@ -527,8 +544,11 @@ article *, section * {
 
 table {
   border-collapse: collapse;
-  width: auto;
-  width: max-content;
+}
+@media screen and (min-width: 1700px) {
+  table {
+    width: max-content;
+  }
 }
 
 thead {
@@ -595,7 +615,7 @@ tfoot td, tfoot th {
   text-align: center;
   flex-grow: 1;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .main-nav a {
     font-size: 0.75rem;
     display: grid;
@@ -722,7 +742,7 @@ a.button {
 .button-toggle::before {
   content: "";
 }
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 700px) {
   .button-toggle[data-element-hidden=true]::after {
     content: "+" !important;
   }
@@ -800,6 +820,9 @@ a.button {
 .treemenu li a:hover, .treemenu li button:hover, .tree li a:hover, .tree li button:hover {
   background-color: var(--color-fe);
   color: var(--color-bg);
+}
+.treemenu li button, .tree li button {
+  margin-left: 0.3rem;
 }
 
 .tree span {
@@ -956,15 +979,15 @@ a.button {
   padding-left: 3px;
 }
 .code-wrapper code {
-  margin-left: 20px;
+  display: block;
+  width: 90%;
   font-size: 1.1rem;
   background-color: var(--color-bg) !important;
   color: var(--color-fe) !important;
 }
 .code-wrapper pre {
   width: 100%;
-  padding: 3px;
   max-height: 1000px;
   overflow-y: scroll;
-  margin: 0;
+  margin: 1px;
 }

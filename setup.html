@@ -15,15 +15,13 @@
     });      
   </script>
   
-    <script type="application/javascript" src="/js/asciiart.min.js"></script>
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded", () => {
-            // Initialize the Sidebar component
-            new AsciiartTheme.Sidebar("#sidebar");
-            new AsciiartTheme.Treemenu(".treemenu");
-            AsciiartTheme.autoinit.codewrapper()
-        });
-    </script>
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+      AsciiartTheme.autoinit.codewrapper();
+    });   
+</script>
+
 
 </head>
 <body class="sidebar-layout">
@@ -137,7 +135,7 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
         <p>After installing the package you can import the minified javascript directly into youer html:</p>
         <div class="code-wrapper">
             <div>
-                <h5>JS/HTML</h5>
+                <h5 class="sm-hidden">JS/HTML</h5>
                 <div class="tab-button-container">
                     <button class="btn-tab" aria-selected="true" aria-controls="#npm-use-classic">Classic</button>
                     <button class="btn-tab" aria-controls="#npm-use-module">Browser Module</button>
