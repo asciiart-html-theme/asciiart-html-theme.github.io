@@ -8,8 +8,8 @@
 
   <!-- SCSS compiled CSS -->
   <link rel="stylesheet" href="/css/style.css">
-  <script type="application/javascript" src="/js/asciiart.min.js"></script>
-  <script type="application/javascript">
+  <script src="/js/asciiart.min.js"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       new AsciiartTheme.Sidebar("#sidebar");
     });      
@@ -25,7 +25,7 @@
 </head>
 <body class="sidebar-layout">
   <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
-    <button class="button-close" data-control-element="#sidebar"></button>
+    <button class="button-close" aria-controls="#sidebar"></button>
     
   <header class="banner">
    <pre>
@@ -50,6 +50,7 @@
         <ul>
             <li><a href="#no-sidebar">No Sidebar</a></li>
             <li><a href="#full">Sidebar Full</a></li>
+            <li><a href="#full-no-nav">Sidebar Full (no-nav)</a></li>
             <li><a href="#base-sidebar">Sidebar upon content</a></li>
         </ul>
     </li>
@@ -75,9 +76,9 @@
   <div class="main-wrapper">
     <div class="nav-wrapper sticky-top">
         <div class="lead">
-          <button role="button" 
+          <button
             class="button-expand button-toggle" 
-            data-control-element="#sidebar"
+            aria-controls="#sidebar"
           ></button>
         </div>
         <nav class="main-nav">
@@ -99,6 +100,7 @@
     <ul>
         <li>No Sidebar <a href="/layouts/demos/no-sidebar.html" class="button" target="_blank">Demo</a></li>
         <li>Sidebar Full – Sidebar with header upon aside. <a href="/layouts/demos/sidebar-full.html" class="button" target="_blank">Demo</a></li>
+        <li>Sidebar Full (no-nav)<a href="/layouts/demos/sidebar-full-no-nav.html" class="button">Demo</a></li>
         <li>Sidebar upon content <a href="/layouts/demos/base-sidebar.html" class="button" target="_blank">Demo</a></li>
     </ul>
 </section>
@@ -114,7 +116,7 @@
     <p>Using this content you can generate the most basic html.</p>
     <div class="code-wrapper">
         <div>
-            <h5>HTML Code</h5>
+            <span>HTML Code</span>
             <a href="/layouts/demos/no-sidebar.html" class="button" target="_blank">Preview</a>
             <button class="copy">Copy</button>
         </div>
@@ -181,7 +183,7 @@
     </div>
     <p>As you notice you need to include the css file. No javascript required.</p>
     <div class="code-wrapper">
-        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <div><span>CSS</span><button class="copy">Copy</button></div>
         <pre><code>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
 </code></pre>
@@ -206,7 +208,7 @@
     <h2>HTML Example</h2>
     <div class="code-wrapper">
         <div>
-            <h5>HTML Code</h5>
+            <span>HTML Code</span>
             <a href="/layouts/demos/sidebar-full.html" class="button" target="_blank">Preview</a>
             <button class="copy">Copy</button>
         </div>
@@ -221,8 +223,8 @@
 
   &lt;!-- SCSS compiled CSS --&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
-  &lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script type=&quot;application/javascript&quot;&gt;
+  &lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
     document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
       new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
     });      
@@ -231,7 +233,7 @@
 &lt;/head&gt;
 &lt;body class=&quot;sidebar-layout&quot;&gt;
   &lt;div id=&quot;sidebar&quot; class=&quot;aside-wrapper-fullheight bellow-nav&quot;&gt;
-    &lt;button class=&quot;button-close&quot; data-control-element=&quot;#sidebar&quot;&gt;&lt;/button&gt;
+    &lt;button class=&quot;button-close&quot; aria-controls=&quot;#sidebar&quot;&gt;&lt;/button&gt;
     
 
     &lt;aside&gt;
@@ -248,9 +250,9 @@ Sidebar content Here could place menus or navigation links.
   &lt;div class=&quot;main-wrapper&quot;&gt;
     &lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
         &lt;div class=&quot;lead&quot;&gt;
-          &lt;button role=&quot;button&quot; 
+          &lt;button
             class=&quot;button-expand button-toggle&quot; 
-            data-control-element=&quot;#sidebar&quot;
+            aria-controls=&quot;#sidebar&quot;
           &gt;&lt;/button&gt;
         &lt;/div&gt;
         &lt;nav class=&quot;main-nav&quot;&gt;
@@ -301,26 +303,167 @@ Sidebar content Here could place menus or navigation links.
         To use this layout, first include the theme's CSS:
     </p>
     <div class="code-wrapper">
-        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <div><span>CSS</span><button class="copy">Copy</button></div>
         <pre><code>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
 </code></pre>
     </div>
-    <h2>Javascriupt</h2>
+    <h2>Javascript</h2>
     <p>
         To keep the theme lightweight and modular, components do not auto-initialize. You must instantiate the Sidebar manually after the DOM has loaded:
     </p>
     <div class="code-wrapper">
-        <div><h5>JavaScript</h5>
+        <div><span>JavaScript</span>
             <div class="tab-button-container">
-                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#js">JS</button>
-                <button class="btn-tab" role="tab" aria-controls="#esm">ESM</button>
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="esm">ESM</button>
             </div>
             <button class="copy">Copy</button>
         </div>
         <pre id="js"><code>
-&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;application/javascript&quot;&gt;
+&lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar component
+        new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+        <pre id="esm"><code>
+&lt;script type=&quot;component&quot;&gt;
+    import { Sidebar } from &quot;js/asciiart.esm.min.js&quot;;
+
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+        // Initialize the Sidebar using ES6 module
+        new Sidebar(&quot;#sidebar&quot;);
+    });
+&lt;/script&gt;
+</code></pre>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<section id="full-no-nav">
+    <h1>Sidebar Full Layout (without navigation)</h1>
+    <p>
+        Sidebar takes over full space but the main content has no navigation.
+    </p>
+    <p>
+        Upon small screen or upon window resizing sidebar moves offcanvas allowing the user to focus on content.
+    </p>
+    <h2>HTML Example</h2>
+    <div class="code-wrapper">
+        <div>
+            <span>HTML Code</span>
+            <a href="/layouts/demos/sidebar-full-no-nav.html" class="button" target="_blank">Preview</a>
+            <button class="copy">Copy</button>
+        </div>
+        <pre><code>
+    
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Default Title&lt;/title&gt;
+
+  &lt;!-- SCSS compiled CSS --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
+  &lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script &gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+      new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
+    });      
+  &lt;/script&gt;
+  
+&lt;/head&gt;
+&lt;body class=&quot;sidebar-layout&quot;&gt;
+  &lt;div class=&quot;sidebar-btn&quot;&gt;
+    &lt;button class=&quot;button-expand button-toggle&quot; aria-controls=&quot;#sidebar&quot; aria-expanded=&quot;true&quot;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;sidebar&quot; class=&quot;aside-wrapper&quot;&gt;
+    &lt;button class=&quot;button-close&quot; aria-controls=&quot;#sidebar&quot;&gt;&lt;/button&gt;
+    
+
+    &lt;aside&gt;
+      &lt;nav aria-label=&quot;Sidebar navigation&quot;&gt;
+        
+Sidebar content Here could place menus or navigation links.
+
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+
+    
+  &lt;/div&gt;
+
+  &lt;div class=&quot;main-wrapper&quot;&gt;
+    &lt;main&gt;
+        
+    &lt;!-- Main content place text, forms or anything else here --&gt;
+    &lt;section&gt;
+    &lt;h1&gt;Article 1&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 2&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 3&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+
+&lt;section&gt;
+    &lt;h1&gt;Article 4&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h1&gt;Article 5&lt;/h1&gt;
+    &lt;p&gt;Conubia donec, velit dictumst interdum. Per quisque adipiscing, habitasse litora sed id. Varius porttitor aliquet, placerat erat, quam vulputate viverra eros nec gravida. Magna interdum nostra euismod, arcu enim consectetur primis duis. Habitant eu mi porta, curabitur sit sollicitudin, convallis dui metus leo nibh erat aenean sed. Egestas massa nulla turpis, imperdiet vivamus curabitur, dictum lacinia vulputate dictumst nullam luctus placerat molestie.&lt;/p&gt;
+&lt;/section&gt;
+
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </div>
+    <h2>CSS</h2>
+    <p>
+        To use this layout, first include the theme's CSS:
+    </p>
+    <div class="code-wrapper">
+        <div><span>CSS</span><button class="copy">Copy</button></div>
+        <pre><code>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+    </div>
+    <h2>Javascript</h2>
+    <p>
+        To keep the theme lightweight and modular, components do not auto-initialize. You must instantiate the Sidebar manually after the DOM has loaded:
+    </p>
+    <div class="code-wrapper">
+        <div><span>JavaScript</span>
+            <div class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="esm">ESM</button>
+            </div>
+            <button class="copy">Copy</button>
+        </div>
+        <pre id="js"><code>
+&lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script &gt;
     document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
         // Initialize the Sidebar component
         new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
@@ -356,7 +499,7 @@ Sidebar content Here could place menus or navigation links.
     <p>Using this content you can generate the most basic html.</p>
     <div class="code-wrapper">
         <div>
-            <h5>HTML Code</h5>
+            <span>HTML Code</span>
             <a href="/layouts/demos/base-sidebar.html" class="button" target="_blank">Preview</a>
             <button class="copy">Copy</button>
         </div>
@@ -369,8 +512,8 @@ Sidebar content Here could place menus or navigation links.
 
   &lt;!-- SCSS compiled CSS --&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
-  &lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
-  &lt;script type=&quot;application/javascript&quot;&gt;
+  &lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
     document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
       new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
     });      
@@ -381,9 +524,9 @@ Sidebar content Here could place menus or navigation links.
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div class=&quot;top-left-responsive&quot;&gt;
-     &lt;button role=&quot;button&quot; 
+     &lt;button 
         class=&quot;button-expand button-toggle&quot; 
-        data-control-element=&quot;#sidebar&quot;
+        aria-controls=&quot;#sidebar&quot;
       &gt;&lt;/button&gt;
   &lt;/div&gt;
 
@@ -416,7 +559,7 @@ Sidebar content Here could place menus or navigation links.
 
   &lt;div class=&quot;sidebar-layout&quot;&gt;
     &lt;div class=&quot;aside-wrapper&quot; id=&quot;sidebar&quot;&gt;
-      &lt;button class=&quot;button-close&quot; data-control-element=&quot;#sidebar&quot;&gt;&lt;/button&gt;
+      &lt;button class=&quot;button-close&quot; aria-controls=&quot;#sidebar&quot;&gt;&lt;/button&gt;
       &lt;aside&gt;
         &lt;nav aria-label=&quot;Sidebar navigation&quot;&gt;
             
@@ -465,7 +608,7 @@ Sidebar content Here could place menus or navigation links.
     <h2>CSS</h2>
     <p>As you notice you need to include the css file.</p>
     <div class="code-wrapper">
-        <div><h5>CSS</h5><button class="copy">Copy</button></div>
+        <div><span>CSS</span><button class="copy">Copy</button></div>
         <pre><code>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/style.css&quot;&gt;
 </code></pre>
@@ -473,16 +616,16 @@ Sidebar content Here could place menus or navigation links.
     <h2>Javascript</h2>
     <p>Furthermore you need to include the theme's javascript file and initialize the sidebar.<br>To keep the theme lightweight and modular, components do not auto-initialize. You must instantiate the Sidebar manually after the DOM has loaded.</p>
     <div class="code-wrapper">
-        <div><h5>Javascript</h5>
-             <div class="tab-button-container">
-                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#base-sidebar-js">JS</button>
-                <button class="btn-tab" role="tab" aria-controls="#base-sidebar-esm">ESM</button>
+        <div><span>Javascript</span>
+             <div role="tablist" class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="base-sidebar-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="base-sidebar-esm">ESM</button>
             </div>
             <button class="copy">Copy</button>
         </div>
         <pre id="base-sidebar-js"><code>
-&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;application/javascript&quot;&gt;
+&lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+&lt;script &gt;
     document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
         // Initialize the Sidebar component
         new AsciiartTheme.Sidebar(&quot;#sidebar&quot;);
@@ -506,10 +649,10 @@ Sidebar content Here could place menus or navigation links.
 
 <section id="article">
     <h1>Article &amp; nomal text</h1>
-    <p>Upon <code>&lt;main&gt;&lt;/main&gt;</code> the page content resides upon. You can use <code>&lt;article&gt;&lt;/article&gt;</code> and <code>&lt;article&gt;&lt;/article&gt;</code> tags to wrap the content:
+    <p>Upon <code>&lt;main&gt;&lt;/main&gt;</code> the page content resides upon. You can use <code>&lt;article&gt;&lt;/article&gt;</code> and <code>&lt;article&gt;&lt;/article&gt;</code> tags to wrap the content:</p>
     <div class="code-wrapper">
         <div>
-            <h5>HTML Code</h5>
+            <span>HTML Code</span>
             <button class="copy">Copy</button>
         </div>
         <pre><code>&lt;main&gt;
@@ -531,7 +674,6 @@ Sidebar content Here could place menus or navigation links.
     &lt;/article&gt;
 &lt;/main&gt;</code></pre>
     </div>
-    </p>
 </section>
 
 
@@ -563,7 +705,7 @@ Sidebar content Here could place menus or navigation links.
         </p>
         <div class="code-wrapper">
             <div>
-                <h5>html</h5>
+                <span>html</span>
                 <button class="copy">Copy</button>
             </div>
             <pre><code>&lt;article class=&quot;manpage&quot;&gt;
@@ -666,7 +808,7 @@ grep -n &quot;main&quot; program.c
         <p>Using class <code>.synopsis</code> you can format the xcomman line usage. Each argument could be annotated using <code>&lt;var&gt;...&lt;/var&gt;</code> html tag:</p>
         <div class="code-wrapper">
             <div>
-                <h5>html</h5>
+                <span>html</span>
                 <button class="copy">Copy</button>
             </div>
             <pre><code>&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;grep [&lt;var&gt;OPTIONS&lt;/var&gt;] &lt;var&gt;PATTERN&lt;/var&gt; [&lt;var&gt;FILE&lt;/var&gt;...]&lt;/code&gt;&lt;/pre&gt;</code></pre>
@@ -674,7 +816,7 @@ grep -n &quot;main&quot; program.c
         <p>You can use <code>&lt;pre&gt;...&lt;/pre&gt;</code> with <code>.synopsis</code> class multiple times. Also can be used in conjuction with <code>&lt;code&gt;...&lt;/code&gt;</code> tags:</p>
         <div class="code-wrapper">
             <div>
-                <h5>html</h5>
+                <span>html</span>
                 <button class="copy">Copy</button>
             </div>
             <pre><code>&lt;pre class=&quot;synopsis&quot;&gt;&lt;code&gt;tar&lt;/code&gt; &lt;var&gt;-c&lt;/var&gt; [&lt;var&gt;-f&lt;/var&gt; &lt;var&gt;ARCHIVE&lt;/var&gt;] [&lt;var&gt;OPTIONS&lt;/var&gt;] [&lt;var&gt;FILE...&lt;/var&gt;]&lt;/pre&gt;
@@ -690,7 +832,7 @@ grep -n &quot;main&quot; program.c
         <p>Upon manpage the comnmand line arguments use <code>&lt;dl&gt;&lt;/dl&gt;</code> html tags</p>
         <div class="code-wrapper">
             <div>
-                <h5>html</h5>
+                <span>html</span>
                 <button class="copy">Copy</button>
             </div>
             <pre><code>&lt;dl&gt;

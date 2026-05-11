@@ -178,8 +178,8 @@ body.sidebar-layout {
   height: auto;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  max-width: 40%;
+  min-width: 350px;
+  max-width: 350px;
 }
 .sidebar-layout .aside-wrapper-fullheight .banner {
   font-size: 0.6rem;
@@ -216,7 +216,6 @@ body.sidebar-layout {
     width: 40%;
     background-color: var(--color-bg);
     padding: 1px;
-    overflow-y: scroll;
     bottom: 0;
   }
   .sidebar-layout .aside-wrapper-fullheight .button-close {
@@ -251,8 +250,8 @@ body.sidebar-layout {
   height: auto;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  max-width: 40%;
+  min-width: 350px;
+  max-width: 350px;
 }
 .sidebar-layout .aside-wrapper .banner {
   font-size: 0.6rem;
@@ -286,7 +285,6 @@ body.sidebar-layout {
     width: 40%;
     background-color: var(--color-bg);
     padding: 1px;
-    overflow-y: scroll;
     bottom: 0;
   }
   .sidebar-layout .aside-wrapper .button-close {
@@ -314,6 +312,32 @@ body.sidebar-layout {
   }
   .sidebar-layout .aside-wrapper .banner {
     font-size: 1rem;
+  }
+}
+.sidebar-layout .sidebar-btn {
+  position: absolute;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed;
+}
+.sidebar-layout .sidebar-btn button {
+  width: 50px;
+  height: 50px;
+}
+@media screen and (min-width: 1700px) {
+  .sidebar-layout .sidebar-btn {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sidebar-layout .sidebar-btn {
+    right: 10px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .sidebar-layout:has(.sidebar-btn) .main-wrapper {
+    margin-top: 60px !important;
   }
 }
 
@@ -973,7 +997,7 @@ a.button {
   justify-content: center;
   min-width: 40px;
 }
-.code-wrapper div h5 {
+.code-wrapper div span {
   flex-grow: 3;
   padding-right: 3px;
   padding-left: 3px;
@@ -990,4 +1014,18 @@ a.button {
   max-height: 1000px;
   overflow-y: scroll;
   margin: 1px;
+}
+
+ul.inline-comma li {
+  display: inline;
+}
+ul.inline-comma li::after {
+  content: ",";
+}
+ul.inline-comma li:last-child::after {
+  content: "";
+}
+
+ul.inline li {
+  display: inline;
 }

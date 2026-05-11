@@ -9,7 +9,7 @@
   <!-- SCSS compiled CSS -->
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/asciiart.min.js"></script>
-  <script>
+  <script >
     document.addEventListener("DOMContentLoaded", () => {
       new AsciiartTheme.Sidebar("#sidebar");
     });      
@@ -17,7 +17,10 @@
   
 </head>
 <body class="sidebar-layout">
-  <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
+  <div class="sidebar-btn">
+    <button class="button-expand button-toggle" aria-controls="#sidebar" aria-expanded="true"></button>
+  </div>
+  <div id="sidebar" class="aside-wrapper">
     <button class="button-close" aria-controls="#sidebar"></button>
     
 
@@ -33,21 +36,6 @@ Sidebar content Here could place menus or navigation links.
   </div>
 
   <div class="main-wrapper">
-    <div class="nav-wrapper sticky-top">
-        <div class="lead">
-          <button
-            class="button-expand button-toggle" 
-            aria-controls="#sidebar"
-          ></button>
-        </div>
-        <nav class="main-nav">
-  <a href="/" class="">Index</a>
-  <a href="/setup.html" class="">Setup</a>
-  <a href="/layouts" class="">Page types &amp; Layouts</a>
-  <a href="/components.html" class="">Visual Components &amp; CSS classes</a>
-</nav>
-    </div>
-
     <main>
         
     <!-- Main content place text, forms or anything else here -->

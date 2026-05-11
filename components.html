@@ -8,8 +8,8 @@
 
   <!-- SCSS compiled CSS -->
   <link rel="stylesheet" href="/css/style.css">
-  <script type="application/javascript" src="/js/asciiart.min.js"></script>
-  <script type="application/javascript">
+  <script src="/js/asciiart.min.js"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       new AsciiartTheme.Sidebar("#sidebar");
     });      
@@ -52,7 +52,7 @@
 </head>
 <body class="sidebar-layout">
   <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
-    <button class="button-close" data-control-element="#sidebar"></button>
+    <button class="button-close" aria-controls="#sidebar"></button>
     
   <header class="banner">
    <pre>
@@ -99,6 +99,7 @@
             <li><a href="#treemenu">Treemenu</a></li>
         </ul>
     </li>
+    <li><a href="#miscelanous">Miscelanous classes</a></li>
  
 </ul>
 
@@ -115,9 +116,9 @@
   <div class="main-wrapper">
     <div class="nav-wrapper sticky-top">
         <div class="lead">
-          <button role="button" 
+          <button
             class="button-expand button-toggle" 
-            data-control-element="#sidebar"
+            aria-controls="#sidebar"
           ></button>
         </div>
         <nav class="main-nav">
@@ -135,15 +136,13 @@
 <h1>Typograhpy</h1>
     <article>
         <h2>Headers</h2>
-        <div class="code-wrapper">
-            <pre>
-                <h1>h1. Header 1</h1>
-                <h2>h2. Header 2</h2>
-                <h3>h3. Header 3</h3>
-                <h4>h4. Header 4</h4>
-                <h5>h5. Header 5</h5>
-                <h6>h6. Header 6</h6>
-            </pre>
+        <div>
+            <h1>h1. Header 1</h1>
+            <h2>h2. Header 2</h2>
+            <h3>h3. Header 3</h3>
+            <h4>h4. Header 4</h4>
+            <h5>h5. Header 5</h5>
+            <h6>h6. Header 6</h6>
         </div>
     </article>
     <article>
@@ -156,15 +155,52 @@
         <p> 
             This is a link styled as button <a href="#" class="button">link</a><br>
             Use class <code>button</code> to style it:
-            <div class="code-wrapper">
-                <pre><code>&lt;a href="#" class="button"&gt;link&lt;/a&gt;</code></pre>
-            </div>
         </p>
+        <div class="code-wrapper">
+            <pre><code>&lt;a href="#" class="button"&gt;link&lt;/a&gt;</code></pre>
+        </div>
+    </article>
+    <article>
+        <h2>Lists</h2>
+        <section>
+            <h3>Unordered List</h3>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Ordered List</h3>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ol>
+        </section>
+        <section>
+            <h3>Inline list</h3>
+            <p>Using class <code>.inline</code> upon a <code>ul</code> class in order to display a list as inline:</p>
+            <ul class="inline">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Inline with commas</h3>
+            <p>Using class <code>.inline-comma</code> upon a <code>ul</code> class in order to display a list as inline:</p>
+            <ul class="inline-comma">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </section>
     </article>
 </section>
 <section id="tables">
     <h1>Tables</h1>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Column 1</th>
@@ -230,12 +266,21 @@
     <article>
         <h2>Inline</h2>
         <div>
-            NaN
+            
+<dl class="desc-columns">
+    <dt>Apple</dt>
+    <dd>A red fruit rich in vitamins</dd>
+    <dt>Orange</dt>
+    <dd>Both a fruit and a color. As a fruit it is sually squeezed for its juice.</dd>
+    <dt>Banana</dt>
+    <dd>Yellow long fruit rich in potasium. It is sweet and most popular.</dd>
+</dl>
+
         </div>
         <p>Using class <code>.desc-columns</code> you can placer both <code>&lt;dt&gt;...&lt;/dt&gt;</code> into a single line with te following <code>&lt;dd&gt;...&lt;/dd&gt;</code>:</p>
         <div class="code-wrapper">
             <div>
-                <h5>Html</h5>
+                <span>Html</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>&lt;dl class=&quot;desc-columns&quot;&gt;
@@ -255,6 +300,7 @@
     <h1>Colors</h1>
     <p>Theme comes comes in color combinations consisting of 2 colors. Background color and text color.<br>
         For each color there are classes started with <code>color-*</code> indicating which color is selected:
+    </p>
         <table>
             <thead>
                 <tr>
@@ -304,7 +350,6 @@
                 </tr>
             </tbody>
         </table>
-    </p>
 </section>
 
 
@@ -330,28 +375,26 @@
             </nav>
         </div>
         <p>Code:</p>
-        <pre class="code-wrapper">
+        <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
-            <code>&lt;div class=&quot;nav-wrapper&quot;&gt;
+            <pre><code>&lt;div class=&quot;nav-wrapper&quot;&gt;
     &lt;nav class=&quot;main-nav&quot;&gt;
         &lt;a href=&quot;#&quot;&gt;Item 1&lt;/a&gt;
         &lt;a href=&quot;#&quot;&gt;Item 2&lt;/a&gt;
         &lt;a href=&quot;#&quot;&gt;Item 3&lt;/a&gt;
     &lt;/nav&gt;
-&lt;/div&gt;
-                
-            </code>
-        </pre>
+&lt;/div&gt;</code></pre>
+        </div>
     </article>
     <article id="navbar-sticky">
         <h2>Sticky Navbar</h2>
         <p>If you want the navbar to stick on top of thew screen use <code>sticky-top</code> class:</p>
         <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>&lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
@@ -376,7 +419,7 @@
         </div>
          <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code> &lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
@@ -400,10 +443,10 @@
                 <a href="#">Item 3</a>
             </nav>
         </div>
-        <p>Using the class <code>active</code> you can hilight an active element indicating current visited page:
-             <div class="code-wrapper">
+        <p>Using the class <code>active</code> you can hilight an active element indicating current visited page:</p>
+        <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>&lt;div class=&quot;nav-wrapper sticky-top&quot;&gt;
@@ -414,7 +457,6 @@
     &lt;/nav&gt;
 &lt;/div&gt; </code></pre>
         </div>
-        </p>
     </article>
 </section>
 
@@ -533,14 +575,14 @@
     <p>If you want to place a piece of code into your documentation use:</p>
     <div class="code-wrapper">
         <div>
-            <h5>HTML</h5>
+            <span>HTML</span>
             <button class="copy">COPY</button>
         </div>
         <pre>
             <code>
 &lt;div class="code-wrapper"&gt;
     &lt;div&gt;
-        &lt;h5&gt;HTML&lt;/h5&gt;
+        &lt;span&gt;HTML&lt;/span&gt;
         &lt;button class="copy"&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
     &lt;pre&gt;
@@ -552,13 +594,13 @@
             </code>
         </pre>
     </div>
-    <p>The component also need to initialize the copy buttons, both js and esm supported:
+    <p>The component also need to initialize the copy buttons, both js and esm supported:</p>
     <div class="code-wrapper">
         <div>
-            <h5>JS</h5>
-            <div class="tab-button-container">
-                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#codewrapper-init-js">JS</button>
-                <button class="btn-tab" role="tab" aria-controls="#codewrapper-init-esm">ESM</button>
+            <span>JS</span>
+            <div role="tablist" class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="codewrapper-init-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="codewrapper-init-esm">ESM</button>
             </div>
             <button class="copy">COPY</button>
         </div>
@@ -583,14 +625,14 @@
             </code>
         </pre>
     </div>
-</p>
-    <p>Otherwise you can use the <code>CodeWrapper</code> class, ideal for a single element, both js and esm supported:
+
+    <p>Otherwise you can use the <code>CodeWrapper</code> class, ideal for a single element, both js and esm supported:</p>
     <div class="code-wrapper">
         <div>
-            <h5>JS</h5>
-            <div class="tab-button-container">
-                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#codewrapper-class-js">JS</button>
-                <button class="btn-tab" role="tab" aria-controls="#codewrapper-class-esm">ESM</button>
+            <span>JS</span>
+            <div role="tablist" class="tab-button-container">
+                <button class="btn-tab" role="tab" aria-selected="true" aria-controls="codewrapper-class-js">JS</button>
+                <button class="btn-tab" role="tab" aria-controls="codewrapper-class-esm">ESM</button>
             </div>
             <button class="copy">COPY</button>
         </div>
@@ -615,25 +657,24 @@
             </code>
         </pre>
     </div>
-    </p>
+    
 </article>
 <article id="codewrapper-tabs">
     <h2>Tabs</h2>
-    <p>
-        In case thay you need to show variations (eg. on how could a package be installed) codewrapper supports tabs as well:
+    <p>In case thay you need to show variations (eg. on how could a package be installed) codewrapper supports tabs as well:</p>
         <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
         <pre>
             <code>
 &lt;div class="code-wrapper"&gt;
     &lt;div&gt;
-        &lt;h5&gt;Installation Instructions&lt;/h5&gt;
-        &lt;div class="tab-button-container"&gt;
-                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="#windows">Windows&lt;/button&gt;
-                &lt;button class="btn-tab" role="tab" aria-controls="#linux">Linux&lt;/button&gt;
+        &lt;span&gt;Installation Instructions&lt;/span&gt;
+        &lt;div role="tablist" class="tab-button-container"&gt;
+                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="windows">Windows&lt;/button&gt;
+                &lt;button class="btn-tab" role="tab" aria-controls="linux">Linux&lt;/button&gt;
         &lt;/div&gt;
         &lt;button class="copy"&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
@@ -651,12 +692,11 @@
             </code>
         </pre>
     </div>
-</p>
-<p>
-    Tabs can lead the title as well:
+
+<p>Tabs can lead the title as well:</p>
     <div class="code-wrapper">
         <div>
-            <h5>HTML</h5>
+            <span>HTML</span>
             <button class="copy">COPY</button>
         </div>
         <pre>
@@ -664,10 +704,10 @@
 &lt;div class="code-wrapper"&gt;
     &lt;div&gt;
         &lt;div class="tab-button-container"&gt;
-                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="#windows">Windows&lt;/button&gt;
-                &lt;button class="btn-tab" role="tab" aria-controls="#linux">Linux&lt;/button&gt;
+                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="windows">Windows&lt;/button&gt;
+                &lt;button class="btn-tab" role="tab" aria-controls="linux">Linux&lt;/button&gt;
         &lt;/div&gt;
-        &lt;h5&gt;Installation Instructions&lt;/h5&gt;
+        &lt;span&gt;Installation Instructions&lt;/span&gt;
         &lt;button class="copy"&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
     &lt;pre id="windows"&gt;
@@ -684,21 +724,19 @@
             </code>
         </pre>
     </div>
-</p>
 </article>
 <article id="#codewrapper-links">
     <h2>Links</h2>
-    <p>
-        You can use the class <code>button</code> upon a link in case you want to add extra links eg. html preview links:
+    <p>You can use the class <code>button</code> upon a link in case you want to add extra links eg. html preview links:</p>
         <div class="code-wrapper">
             <div>
-                <h5>HTML</h5>
+                <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>
 &lt;div class="code-wrapper"&gt;
     &lt;div&gt;
-        &lt;h5&gt;Demo&lt;/h5&gt;
+        &lt;span&gt;Demo&lt;/span&gt;
         &lt;a href="#"&gt;Preview&lt;a&gt;
         &lt;button class="copy"&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
@@ -710,7 +748,7 @@
 &lt;/div&gt;
             </code></pre>
         </div>
-    </p>
+    
 </article>
 </section>
 
@@ -747,10 +785,10 @@
     </article>
     <article>
         <h2>Usage</h2>
-        <p>In case you want to simply display a list in a form of tree use <code>tree</code> class instead. Javascript ignores this class:
+        <p>In case you want to simply display a list in a form of tree use <code>tree</code> class instead. Javascript ignores this class:</p>
          <div class="code-wrapper">
                 <div>
-                    <h5>HTML Code</h5>
+                    <span>HTML Code</span>
                     <button class="copy">Copy</button>
                 </div>
                 <pre><code>&lt;ul class=&quot;tree&quot;&gt;
@@ -771,7 +809,6 @@
                 &lt;/li&gt;
             &lt;/ul&gt;</code></pre>
             </div>    
-        </p>
     </article>
 </section>
 
@@ -807,10 +844,10 @@
     </article>
     <article>
         <h2>Usage</h2>
-        <p> Tree menu is an ideal way to represent navigation whilst retaining a nice, retro look. In order to work you need to initialize html:
+        <p> Tree menu is an ideal way to represent navigation whilst retaining a nice, retro look. In order to work you need to initialize html:</p>
             <div class="code-wrapper">
                 <div>
-                    <h5>HTML Code</h5>
+                    <span>HTML Code</span>
                     <button class="copy">Copy</button>
                 </div>
                 <pre><code>&lt;ul class=&quot;treemenu&quot;&gt;
@@ -834,32 +871,66 @@
                 &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Treemenu&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;</code></pre>
             </div>    
-        </p>
-        <p>
-            Beyond html it also needs to be initialized via Javascript:
+        
+        <p>Beyond html it also needs to be initialized via Javascript:</p>
              <div class="code-wrapper">
                 <div>
-                    <h5>JS Code</h5>
-                    <div class="tab-button-container">
-                        <button class="btn-tab" role="tab" aria-selected="true" aria-controls="#treemenu-js">JS</button>
-                        <button class="btn-tab" role="tab" aria-controls="#treemenu-esm">ESM</button>
+                    <span>JS Code</span>
+                    <div role="tablist" class="tab-button-container">
+                        <button class="btn-tab" role="tab" aria-selected="true" aria-controls="treemenu-js">JS</button>
+                        <button class="btn-tab" role="tab" aria-controls="treemenu-esm">ESM</button>
                     </div>
                     <button class="copy">Copy</button>
                 </div>
-                <pre id="treemenu-js"><code>&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
+                <pre role="tabpanel" id="treemenu-js"><code>&lt;script src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
     document.addEventListener(&quot;DOMContentLoaded&quot;,function(){
         AsciiartTheme.autoinit.treemenu()
     })
 &lt;/script&gt;</code></pre>
-                <pre id="treemenu-esm"><code>&lt;script type=&quot;module&quot;&gt;
+                <pre role="tabpanel" id="treemenu-esm"><code>&lt;script type=&quot;module&quot;&gt;
     import { autoinit } from &quot;/js/asciiart.esm.js&quot;; 
     document.addEventListener(&quot;DOMContentLoaded&quot;,function(){
         autoinit.treemenu()
     })
 &lt;/script&gt;</code></pre>
             </div>    
+        
+    </article>
+</section>
+
+
+
+<section id="miscelanous">
+    <h1>Miscelanous classes</h1>
+    <article>
+        <h2>Hide upon small screens</h2>
+        <p>
+            You can use class <code>.sm-hidden</code> in order to hide an elemen in screend having &lt; 700px
         </p>
+    </article>
+    <article>
+        <h2>Banner class</h2>
+        <p> If displaying asciiart wrap it around an element containing <code>.banner</code> class in order to display it nicely:</p>
+        <div class="code-wrapper">
+            <div>
+                <span>html</span>
+                <button class="copy">COPY</button>
+            </div>
+            <pre><code>&lt;header class=&quot;banner&quot;&gt;
+   &lt;pre&gt;  ___           _ _  ___       _   
+ / _ &#92;         (_|_)/ _ &#92;     | |  
+/ /_&#92; &#92;___  ___ _ _/ /_&#92; &#92;_ __| |_ 
+|  _  / __|/ __| | |  _  | &#39;__| __|
+| | | &#92;__ &#92; (__| | | | | | |  | |_ 
+&#92;_| |_/___/&#92;___|_|_&#92;_| |_/_|   &#92;__|
+    &lt;/pre&gt;
+&lt;/header&gt;</code></pre>
+        </div>
+    </article>
+    <article>
+        <h2>Stick to top</h2>
+        <p>Via using class <code>.sticky-top</code> you can make an element stick into the top of the page.</p>
     </article>
 </section>
 

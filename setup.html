@@ -8,8 +8,8 @@
 
   <!-- SCSS compiled CSS -->
   <link rel="stylesheet" href="/css/style.css">
-  <script type="application/javascript" src="/js/asciiart.min.js"></script>
-  <script type="application/javascript">
+  <script src="/js/asciiart.min.js"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       new AsciiartTheme.Sidebar("#sidebar");
     });      
@@ -26,7 +26,7 @@
 </head>
 <body class="sidebar-layout">
   <div id="sidebar" class="aside-wrapper-fullheight bellow-nav">
-    <button class="button-close" data-control-element="#sidebar"></button>
+    <button class="button-close" aria-controls="#sidebar"></button>
     
   <header class="banner">
    <pre>
@@ -68,9 +68,9 @@
   <div class="main-wrapper">
     <div class="nav-wrapper sticky-top">
         <div class="lead">
-          <button role="button" 
+          <button
             class="button-expand button-toggle" 
-            data-control-element="#sidebar"
+            aria-controls="#sidebar"
           ></button>
         </div>
         <nav class="main-nav">
@@ -102,18 +102,18 @@
         <h2>Using CDN</h2>
         <div class="code-wrapper">
             <div>
-                <h5>Html</h5>
-                <div class="tab-button-container">
-                    <button class="btn-tab" aria-selected="true" aria-controls="#cdn-setup-classic">Classic</button>
-                    <button class="btn-tab" aria-controls="#cdn-setup-module">Browser Module</button>
+                <span>Html</span>
+                <div role="tablist" class="tab-button-container">
+                    <button role="tab" class="btn-tab" aria-selected="true" aria-controls="cdn-setup-classic">Classic</button>
+                    <button role="tab" class="btn-tab" aria-controls="cdn-setup-module">Browser Module</button>
                 </div>
                 <button class="copy">COPY</button>
             </div>
-            <pre id="cdn-setup-classic"><code> &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
+            <pre role="tabpanel" id="cdn-setup-classic"><code> &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
 
 &lt;script src=&quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
 &lt;!-- initialize stuff here --&gt;</code></pre>
-            <pre id="cdn-setup-module"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
+            <pre role="tabpanel" id="cdn-setup-module"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@pc_magas/asciiart/dist/css/style.css&quot;/&gt;
 
 &lt;script type=&quot;module&quot;&gt;
 
@@ -127,7 +127,7 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
         <p>Theme is also shipped via NPM so you can import and use it into your own project as well:</p>
         <div class="code-wrapper">
             <div>
-                <h5>Console</h5>
+                <span>Console</span>
             </div>
             <pre><code>npm install @pc_magas/asciiart</code></pre>
         </div>
@@ -135,18 +135,18 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
         <p>After installing the package you can import the minified javascript directly into youer html:</p>
         <div class="code-wrapper">
             <div>
-                <h5 class="sm-hidden">JS/HTML</h5>
-                <div class="tab-button-container">
-                    <button class="btn-tab" aria-selected="true" aria-controls="#npm-use-classic">Classic</button>
-                    <button class="btn-tab" aria-controls="#npm-use-module">Browser Module</button>
+                <span class="sm-hidden">JS/HTML</span>
+                <div role="tablist" class="tab-button-container">
+                    <button role="tab" class="btn-tab" aria-selected="true" aria-controls="npm-use-classic">Classic</button>
+                    <button role="tab" class="btn-tab" aria-controls="npm-use-module">Browser Module</button>
                 </div>
                 <button class="copy">COPY</button>
             </div>
-            <pre id="npm-use-classic"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
+            <pre role="tabpanel" id="npm-use-classic"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/@pc_magas/asciiart/dist/asciiart.css&quot;/&gt;
 
 &lt;script src=&quot;./node_modules/@pc_magas/asciiart/dist/asciiart.min.js&quot;&gt;&lt;/script&gt;</code></pre>
-            <pre id="npm-use-module"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
+            <pre role="tabpanel" id="npm-use-module"><code>&lt;!-- you can copy these files into any other directory if desired I assume node_modules is in final website--&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;/node_modules/@pc_magas/asciiart/dist/asciiart.css&quot;/&gt;
 &lt;script type=&quot;module&quot; src=&quot;&quot;&gt;
     import {autoinit} from &quot;/node_modules/@pc_magas/asciiart/dist/asciiart.esm.min.js&quot;
@@ -156,7 +156,7 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
         <p>Or use a bundler instead:</p>
         <div class="code-wrapper">
             <div>
-                <h5>JS</h5>
+                <span>JS</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>import {autoinit} from @pc_magas/asciiart
@@ -165,7 +165,7 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
         <p>Css is loaded upon Html using a <code>&lt;link&gt;</code> tag:</p>
         <div class="code-wrapper">
             <div>
-                <h5>HTML/CSS</h5>
+                <span>HTML/CSS</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>&lt;link rel="stylesheet" href="./node_modules/@pc_magas/asciiart/dist/asciiart.css"/ &gt;</code></pre>
@@ -173,14 +173,12 @@ import {autoinit} from &quot;https://unpkg.com/@pc_magas/asciiart/dist/js/asciia
     </article>
 </section>
 
-
-
 <section id="sass">
     <h2>Using SaaS</h2>
     <p>Theme also ships sass where you can use it into your project as well:</p>
     <div class="code-wrapper">
             <div>
-                <h5>SASS</h5>
+                <span>SASS</span>
                 <button class="copy">COPY</button>
             </div>
             <pre><code>@use "@pc_magas/asciiart/src/scss/style";

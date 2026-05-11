@@ -734,8 +734,1227 @@
     </dd>
   </dl>
 </section>
+<section class="indented">
+  <h3>Handling of file attributes</h3>
 
-  <section class="indented">
+  <dl>
+    <dt>
+      <code>--atime-preserve</code>[=<var>METHOD</var>]
+    </dt>
+    <dd>
+      Preserve access times on dumped files, either by restoring the
+      times after reading (<code>METHOD=replace</code>, this is the default)
+      or by not setting the times in the first place
+      (<code>METHOD=system</code>).
+    </dd>
+
+    <dt>
+      <code>--delay-directory-restore</code>
+    </dt>
+    <dd>
+      Delay setting modification times and permissions of extracted
+      directories until the end of extraction. Use this option when
+      extracting from an archive which has unusual member ordering.
+    </dd>
+
+    <dt>
+      <code>--group</code>=<var>NAME</var>[:<var>GID</var>]
+    </dt>
+    <dd>
+      <p>
+        Force <var>NAME</var> as group for added files. If <var>GID</var>
+        is not supplied, <var>NAME</var> can be either a user name or
+        numeric <var>GID</var>. In this case the missing part
+        (<var>GID</var> or name) will be inferred from the current host's
+        group database.
+      </p>
+
+      <p>
+        When used with <code>--group-map</code>=<var>FILE</var>, affects
+        only those files whose owner group is not listed in
+        <var>FILE</var>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--group-map</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      <p>
+        Read group translation map from <var>FILE</var>. Empty lines are
+        ignored. Comments are introduced with <code>#</code> sign and
+        extend to the end of line.
+      </p>
+
+      <p>
+        Each non-empty line in <var>FILE</var> defines translation for a
+        single group. It must consist of two fields, delimited by any
+        amount of whitespace:
+      </p>
+
+      <pre><code>OLDGRP NEWGRP[:NEWGID]</code></pre>
+
+      <p>
+        <code>OLDGRP</code> is either a valid group name or a
+        <code>GID</code> prefixed with <code>+</code>. Unless
+        <code>NEWGID</code> is supplied, <code>NEWGRP</code> must also be
+        either a valid group name or a <code>+GID</code>. Otherwise, both
+        <code>NEWGRP</code> and <code>NEWGID</code> need not be listed in
+        the system group database.
+      </p>
+
+      <p>
+        As a result, each input file with owner group
+        <code>OLDGRP</code> will be stored in archive with owner group
+        <code>NEWGRP</code> and <code>GID NEWGID</code>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--mode</code>=<var>CHANGES</var>
+    </dt>
+    <dd>
+      Force symbolic mode <var>CHANGES</var> for added files.
+    </dd>
+
+    <dt>
+      <code>--mtime</code>=<var>DATE-OR-FILE</var>
+    </dt>
+    <dd>
+      Set <code>mtime</code> for added files.
+      <var>DATE-OR-FILE</var> is either a date/time in almost arbitrary
+      format, or the name of an existing file. In the latter case the
+      <code>mtime</code> of that file will be used.
+    </dd>
+
+    <dt>
+      <code>-m</code>, <code>--touch</code>
+    </dt>
+    <dd>
+      Don't extract file modified time.
+    </dd>
+
+    <dt>
+      <code>--no-delay-directory-restore</code>
+    </dt>
+    <dd>
+      Cancel the effect of the prior
+      <code>--delay-directory-restore</code> option.
+    </dd>
+
+    <dt>
+      <code>--no-same-owner</code>
+    </dt>
+    <dd>
+      Extract files as yourself (default for ordinary users).
+    </dd>
+
+    <dt>
+      <code>--no-same-permissions</code>
+    </dt>
+    <dd>
+      Apply the user's <code>umask</code> when extracting permissions
+      from the archive (default for ordinary users).
+    </dd>
+
+    <dt>
+      <code>--numeric-owner</code>
+    </dt>
+    <dd>
+      Always use numbers for user/group names.
+    </dd>
+
+    <dt>
+      <code>--owner</code>=<var>NAME</var>[:<var>UID</var>]
+    </dt>
+    <dd>
+      <p>
+        Force <var>NAME</var> as owner for added files. If
+        <var>UID</var> is not supplied, <var>NAME</var> can be either a
+        user name or numeric <var>UID</var>. In this case the missing
+        part (<var>UID</var> or name) will be inferred from the current
+        host's user database.
+      </p>
+
+      <p>
+        When used with <code>--owner-map</code>=<var>FILE</var>, affects
+        only those files whose owner is not listed in <var>FILE</var>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--owner-map</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      <p>
+        Read owner translation map from <var>FILE</var>. Empty lines are
+        ignored. Comments are introduced with <code>#</code> sign and
+        extend to the end of line.
+      </p>
+
+      <p>
+        Each non-empty line in <var>FILE</var> defines translation for a
+        single <code>UID</code>. It must consist of two fields,
+        delimited by any amount of whitespace:
+      </p>
+
+      <pre><code>OLDUSR NEWUSR[:NEWUID]</code></pre>
+
+      <p>
+        <code>OLDUSR</code> is either a valid user name or a
+        <code>UID</code> prefixed with <code>+</code>. Unless
+        <code>NEWUID</code> is supplied, <code>NEWUSR</code> must also
+        be either a valid user name or a <code>+UID</code>. Otherwise,
+        both <code>NEWUSR</code> and <code>NEWUID</code> need not be
+        listed in the system user database.
+      </p>
+
+      <p>
+        As a result, each input file owned by <code>OLDUSR</code> will
+        be stored in archive with owner name <code>NEWUSR</code> and
+        <code>UID NEWUID</code>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-p</code>,
+      <code>--preserve-permissions</code>,
+      <code>--same-permissions</code>
+    </dt>
+    <dd>
+      Extract information about file permissions (default for
+      superuser).
+    </dd>
+
+    <dt>
+      <code>--same-owner</code>
+    </dt>
+    <dd>
+      Try extracting files with the same ownership as exists in the
+      archive (default for superuser).
+    </dd>
+
+    <dt>
+      <code>-s</code>,
+      <code>--preserve-order</code>,
+      <code>--same-order</code>
+    </dt>
+    <dd>
+      Sort names to extract to match archive.
+    </dd>
+
+    <dt>
+      <code>--sort</code>=<var>ORDER</var>
+    </dt>
+    <dd>
+      <p>
+        When creating an archive, sort directory entries according to
+        <var>ORDER</var>, which is one of
+        <code>none</code>, <code>name</code>, or <code>inode</code>.
+      </p>
+
+      <p>
+        The default is <code>--sort=none</code>, which stores archive
+        members in the same order as returned by the operating system.
+      </p>
+
+      <p>
+        Using <code>--sort=name</code> ensures the member ordering in
+        the created archive is uniform and reproducible.
+      </p>
+
+      <p>
+        Using <code>--sort=inode</code> reduces the number of disk seeks
+        made when creating the archive and thus can considerably speed
+        up archivation. This sorting order is supported only if the
+        underlying system provides the necessary information.
+      </p>
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Extended file attributes</h3>
+
+  <dl>
+    <dt>
+      <code>--acls</code>
+    </dt>
+    <dd>
+      Enable POSIX ACLs support.
+    </dd>
+
+    <dt>
+      <code>--no-acls</code>
+    </dt>
+    <dd>
+      Disable POSIX ACLs support.
+    </dd>
+
+    <dt>
+      <code>--selinux</code>
+    </dt>
+    <dd>
+      Enable SELinux context support.
+    </dd>
+
+    <dt>
+      <code>--no-selinux</code>
+    </dt>
+    <dd>
+      Disable SELinux context support.
+    </dd>
+
+    <dt>
+      <code>--xattrs</code>
+    </dt>
+    <dd>
+      Enable extended attributes support.
+    </dd>
+
+    <dt>
+      <code>--no-xattrs</code>
+    </dt>
+    <dd>
+      Disable extended attributes support.
+    </dd>
+
+    <dt>
+      <code>--xattrs-exclude</code>=<var>PATTERN</var>
+    </dt>
+    <dd>
+      Specify the exclude pattern for xattr keys.
+      <var>PATTERN</var> is a POSIX regular expression, e.g.
+      <code>--xattrs-exclude='^user.'</code>, to exclude attributes from
+      the user namespace.
+    </dd>
+
+    <dt>
+      <code>--xattrs-include</code>=<var>PATTERN</var>
+    </dt>
+    <dd>
+      Specify the include pattern for xattr keys.
+      <var>PATTERN</var> is a POSIX regular expression.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Device selection and switching</h3>
+
+  <dl>
+    <dt>
+      <code>-f</code>, <code>--file</code>=<var>ARCHIVE</var>
+    </dt>
+    <dd>
+      <p>
+        Use archive file or device <var>ARCHIVE</var>. If this option is
+        not given, tar will first examine the environment variable
+        <code>TAPE</code>. If it is set, its value will be used as the
+        archive name. Otherwise, tar will assume the compiled-in
+        default.
+      </p>
+
+      <p>
+        The default value can be inspected either using the
+        <code>--show-defaults</code> option, or at the end of the
+        <code>tar --help</code> output.
+      </p>
+
+      <p>
+        An archive name that has a colon in it specifies a file or
+        device on a remote machine. The part before the colon is taken
+        as the machine name or IP address, and the part after it as the
+        file or device pathname, e.g.:
+      </p>
+
+      <pre><code>--file=remotehost:/dev/sr0</code></pre>
+
+      <p>
+        An optional username can be prefixed to the hostname, placing an
+        <code>@</code> sign between them.
+      </p>
+
+      <p>
+        By default, the remote host is accessed via the
+        <code>rsh(1)</code> command. Nowadays it is common to use
+        <code>ssh(1)</code> instead. You can do so by giving the
+        following command line option:
+      </p>
+
+      <pre><code>--rsh-command=/usr/bin/ssh</code></pre>
+
+      <p>
+        The remote machine should have the <code>rmt(8)</code> command
+        installed. If its pathname does not match tar's default, you can
+        inform tar about the correct pathname using the
+        <code>--rmt-command</code> option.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--force-local</code>
+    </dt>
+    <dd>
+      Archive file is local even if it has a colon.
+    </dd>
+
+    <dt>
+      <code>-F</code>,
+      <code>--info-script</code>=<var>COMMAND</var>,
+      <code>--new-volume-script</code>=<var>COMMAND</var>
+    </dt>
+    <dd>
+      <p>
+        Run <var>COMMAND</var> at the end of each tape (implies
+        <code>-M</code>). The command can include arguments.
+      </p>
+
+      <p>
+        When started, it will inherit tar's environment plus the
+        following variables:
+      </p>
+
+      <dl>
+        <dt><code>TAR_VERSION</code></dt>
+        <dd>GNU tar version number.</dd>
+
+        <dt><code>TAR_ARCHIVE</code></dt>
+        <dd>The name of the archive tar is processing.</dd>
+
+        <dt><code>TAR_BLOCKING_FACTOR</code></dt>
+        <dd>
+          Current blocking factor, i.e. number of 512-byte blocks in a
+          record.
+        </dd>
+
+        <dt><code>TAR_VOLUME</code></dt>
+        <dd>
+          Ordinal number of the volume tar is processing (set if reading
+          a multi-volume archive).
+        </dd>
+
+        <dt><code>TAR_FORMAT</code></dt>
+        <dd>
+          Format of the archive being processed. One of:
+          <code>gnu</code>,
+          <code>oldgnu</code>,
+          <code>posix</code>,
+          <code>ustar</code>,
+          <code>v7</code>.
+        </dd>
+
+        <dt><code>TAR_SUBCOMMAND</code></dt>
+        <dd>
+          A short option (with a leading dash) describing the operation
+          tar is executing.
+        </dd>
+
+        <dt><code>TAR_FD</code></dt>
+        <dd>
+          File descriptor which can be used to communicate the new
+          volume name to tar.
+        </dd>
+      </dl>
+
+      <p>
+        If the info script fails, tar exits; otherwise, it begins
+        writing the next volume.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-L</code>, <code>--tape-length</code>=<var>N</var>
+    </dt>
+    <dd>
+      <p>
+        Change tape after writing <var>N</var>x1024 bytes.
+      </p>
+
+      <p>
+        If <var>N</var> is followed by a size suffix, the suffix
+        specifies the multiplicative factor to be used instead of 1024.
+      </p>
+
+      <p>
+        This option implies <code>-M</code>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-M</code>, <code>--multi-volume</code>
+    </dt>
+    <dd>
+      Create/list/extract multi-volume archive.
+    </dd>
+
+    <dt>
+      <code>--rmt-command</code>=<var>COMMAND</var>
+    </dt>
+    <dd>
+      Use <var>COMMAND</var> instead of <code>rmt</code> when accessing
+      remote archives. See the description of the <code>-f</code>
+      option, above.
+    </dd>
+
+    <dt>
+      <code>--rsh-command</code>=<var>COMMAND</var>
+    </dt>
+    <dd>
+      Use <var>COMMAND</var> instead of <code>rsh</code> when accessing
+      remote archives. See the description of the <code>-f</code>
+      option, above.
+    </dd>
+
+    <dt>
+      <code>--volno-file</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      When this option is used in conjunction with
+      <code>--multi-volume</code>, tar will keep track of which volume
+      of a multi-volume archive it is working in <var>FILE</var>.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Device blocking</h3>
+
+  <dl>
+    <dt>
+      <code>-b</code>, <code>--blocking-factor</code>=<var>BLOCKS</var>
+    </dt>
+    <dd>
+      Set record size to <var>BLOCKS</var>x512 bytes.
+    </dd>
+
+    <dt>
+      <code>-B</code>, <code>--read-full-records</code>
+    </dt>
+    <dd>
+      When listing or extracting, accept incomplete input records after
+      end-of-file marker.
+    </dd>
+
+    <dt>
+      <code>-i</code>, <code>--ignore-zeros</code>
+    </dt>
+    <dd>
+      <p>
+        Ignore zeroed blocks in archive.
+      </p>
+
+      <p>
+        Normally two consecutive 512-blocks filled with zeroes mean EOF
+        and tar stops reading after encountering them.
+      </p>
+
+      <p>
+        This option instructs it to read further and is useful when
+        reading archives created with the <code>-A</code> option.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--record-size</code>=<var>NUMBER</var>
+    </dt>
+    <dd>
+      <p>
+        Set record size. <var>NUMBER</var> is the number of bytes per
+        record.
+      </p>
+
+      <p>
+        It must be multiple of 512.
+      </p>
+
+      <p>
+        It can be suffixed with a size suffix, e.g.
+        <code>--record-size=10K</code>, for 10 Kilobytes.
+      </p>
+
+      <p>
+        See the subsection <em>Size suffixes</em> for a list of valid
+        suffixes.
+      </p>
+    </dd>
+  </dl>
+  </section>
+  <section class="idented">
+  <h3>Archive format selection</h3>
+
+  <dl>
+    <dt>
+      <code>-H</code>, <code>--format</code>=<var>FORMAT</var>
+    </dt>
+    <dd>
+      <p>
+        Create archive of the given format.
+      </p>
+
+      <p>
+        Valid formats are:
+      </p>
+
+      <dl class="desc-columns">
+        <dt><code>gnu</code></dt>
+        <dd>GNU tar 1.13.x format</dd>
+
+        <dt><code>oldgnu</code></dt>
+        <dd>GNU format as per tar &lt;= 1.12.</dd>
+
+        <dt><code>pax</code>, <code>posix</code></dt>
+        <dd>POSIX 1003.1-2001 (pax) format.</dd>
+
+        <dt><code>ustar</code></dt>
+        <dd>POSIX 1003.1-1988 (ustar) format.</dd>
+
+        <dt><code>v7</code></dt>
+        <dd>Old V7 tar format.</dd>
+      </dl>
+    </dd>
+
+    <dt>
+      <code>--old-archive</code>, <code>--portability</code>
+    </dt>
+    <dd>
+      Same as <code>--format=v7</code>.
+    </dd>
+
+    <dt>
+      <code>--pax-option</code>=<var>keyword</var>[[:]=<var>value</var>][,<var>keyword</var>[[:]=<var>value</var>]]...
+    </dt>
+    <dd>
+      <p>
+        Control pax keywords when creating PAX archives
+        (<code>-H pax</code>).
+      </p>
+
+      <p>
+        This option is equivalent to the <code>-o</code> option of the
+        <code>pax(1)</code> utility.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--posix</code>
+    </dt>
+    <dd>
+      Same as <code>--format=posix</code>.
+    </dd>
+
+    <dt>
+      <code>-V</code>, <code>--label</code>=<var>TEXT</var>
+    </dt>
+    <dd>
+      <p>
+        Create archive with volume name <var>TEXT</var>.
+      </p>
+
+      <p>
+        If listing or extracting, use <var>TEXT</var> as a globbing
+        pattern for volume name.
+      </p>
+    </dd>
+  </dl>
+</section>
+<section class="idented">
+  <h3>Compression options</h3>
+
+  <dl>
+    <dt>
+      <code>-a</code>, <code>--auto-compress</code>
+    </dt>
+    <dd>
+      Use archive suffix to determine the compression program.
+    </dd>
+
+    <dt>
+      <code>-I</code>, <code>--use-compress-program</code>=<var>COMMAND</var>
+    </dt>
+    <dd>
+      <p>
+        Filter data through <var>COMMAND</var>. It must accept the
+        <code>-d</code> option, for decompression.
+      </p>
+
+      <p>
+        The argument can contain command line options.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-j</code>, <code>--bzip2</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>bzip2(1)</code>.
+    </dd>
+
+    <dt>
+      <code>-J</code>, <code>--xz</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>xz(1)</code>.
+    </dd>
+
+    <dt>
+      <code>--lzip</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>lzip(1)</code>.
+    </dd>
+
+    <dt>
+      <code>--lzma</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>lzma(1)</code>.
+    </dd>
+
+    <dt>
+      <code>--lzop</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>lzop(1)</code>.
+    </dd>
+
+    <dt>
+      <code>--no-auto-compress</code>
+    </dt>
+    <dd>
+      Do not use archive suffix to determine the compression program.
+    </dd>
+
+    <dt>
+      <code>-z</code>, <code>--gzip</code>,
+      <code>--gunzip</code>, <code>--ungzip</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>gzip(1)</code>.
+    </dd>
+
+    <dt>
+      <code>-Z</code>, <code>--compress</code>,
+      <code>--uncompress</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>compress(1)</code>.
+    </dd>
+
+    <dt>
+      <code>--zstd</code>
+    </dt>
+    <dd>
+      Filter the archive through <code>zstd(1)</code>.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Local file selection</h3>
+
+  <dl>
+    <dt>
+      <code>--add-file</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Add <var>FILE</var> to the archive (useful if its name starts with a dash).
+    </dd>
+
+    <dt>
+      <code>--backup</code>[=<var>CONTROL</var>]
+    </dt>
+    <dd>
+      <p>
+        Backup before removal. The <var>CONTROL</var> argument, if supplied,
+        controls the backup policy. Valid values are:
+      </p>
+
+      <dl>
+        <dt><code>none</code>, <code>off</code></dt>
+        <dd>Never make backups.</dd>
+
+        <dt><code>t</code>, <code>numbered</code></dt>
+        <dd>Make numbered backups.</dd>
+
+        <dt><code>nil</code>, <code>existing</code></dt>
+        <dd>Make numbered backups if numbered backups exist, simple backups otherwise.</dd>
+
+        <dt><code>never</code>, <code>simple</code></dt>
+        <dd>Always make simple backups.</dd>
+      </dl>
+
+      <p>
+        If <var>CONTROL</var> is not given, the value is taken from the
+        <code>VERSION_CONTROL</code> environment variable. If it is not set,
+        <code>existing</code> is assumed.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-C</code>, <code>--directory</code>=<var>DIR</var>
+    </dt>
+    <dd>
+      Change to <var>DIR</var> before performing any operations. This option
+      is order-sensitive, i.e. it affects all options that follow.
+    </dd>
+
+    <dt>
+      <code>--exclude</code>=<var>PATTERN</var>
+    </dt>
+    <dd>
+      Exclude files matching <var>PATTERN</var>, a glob(3)-style wildcard pattern.
+    </dd>
+
+    <dt><code>--exclude-backups</code></dt>
+    <dd>Exclude backup and lock files.</dd>
+
+    <dt><code>--exclude-caches</code></dt>
+    <dd>
+      Exclude contents of directories containing file <code>CACHEDIR.TAG</code>,
+      except for the tag file itself.
+    </dd>
+
+    <dt><code>--exclude-caches-all</code></dt>
+    <dd>
+      Exclude directories containing file <code>CACHEDIR.TAG</code> and the file itself.
+    </dd>
+
+    <dt><code>--exclude-caches-under</code></dt>
+    <dd>
+      Exclude everything under directories containing <code>CACHEDIR.TAG</code>.
+    </dd>
+
+    <dt>
+      <code>--exclude-ignore</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Before dumping a directory, see if it contains <var>FILE</var>. If so,
+      read exclusion patterns from this file. The patterns affect only the
+      directory itself.
+    </dd>
+
+    <dt>
+      <code>--exclude-ignore-recursive</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Same as <code>--exclude-ignore</code>, except patterns affect both the
+      directory and all its subdirectories.
+    </dd>
+
+    <dt>
+      <code>--exclude-tag</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Exclude contents of directories containing <var>FILE</var>, except for
+      <var>FILE</var> itself.
+    </dd>
+
+    <dt>
+      <code>--exclude-tag-all</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Exclude directories containing <var>FILE</var>.
+    </dd>
+
+    <dt>
+      <code>--exclude-tag-under</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Exclude everything under directories containing <var>FILE</var>.
+    </dd>
+
+    <dt><code>--exclude-vcs</code></dt>
+    <dd>Exclude version control system directories.</dd>
+
+    <dt><code>--exclude-vcs-ignores</code></dt>
+    <dd>
+      Exclude files matching patterns from VCS ignore files
+      (<code>.cvsignore</code>, <code>.gitignore</code>, <code>.bzrignore</code>, <code>.hgignore</code>).
+    </dd>
+
+    <dt>
+      <code>-h</code>, <code>--dereference</code>
+    </dt>
+    <dd>Follow symlinks; archive and dump the files they point to.</dd>
+
+    <dt><code>--hard-dereference</code></dt>
+    <dd>Follow hard links; archive and dump the files they refer to.</dd>
+
+    <dt>
+      <code>-K</code>, <code>--starting-file</code>=<var>MEMBER</var>
+    </dt>
+    <dd>Begin at the given member in the archive.</dd>
+
+    <dt>
+      <code>--newer-mtime</code>=<var>DATE</var>
+    </dt>
+    <dd>
+      Work on files whose data changed after <var>DATE</var>.
+      If <var>DATE</var> starts with <code>/</code> or <code>.</code>,
+      it is taken as a file name and its mtime is used.
+    </dd>
+
+    <dt><code>--no-null</code></dt>
+    <dd>Disable the effect of the previous <code>--null</code> option.</dd>
+
+    <dt><code>--no-recursion</code></dt>
+    <dd>Avoid descending automatically in directories.</dd>
+
+    <dt><code>--no-unquote</code></dt>
+    <dd>Do not unquote input file or member names.</dd>
+
+    <dt><code>--no-verbatim-files-from</code></dt>
+    <dd>
+      Treat file list entries as command-line arguments (default behavior).
+    </dd>
+
+    <dt><code>--null</code></dt>
+    <dd>
+      Read null-terminated names from <code>-T</code> options; disables
+      special handling of names starting with <code>-</code>.
+    </dd>
+
+    <dt>
+      <code>-N</code>, <code>--newer</code>=<var>DATE</var>,
+      <code>--after-date</code>=<var>DATE</var>
+    </dt>
+    <dd>
+      Only store files newer than <var>DATE</var>. If it starts with
+      <code>/</code> or <code>.</code>, it is treated as a file name and
+      its mtime is used.
+    </dd>
+
+    <dt><code>--one-file-system</code></dt>
+    <dd>Stay in local file system when creating archive.</dd>
+
+    <dt>
+      <code>-P</code>, <code>--absolute-names</code>
+    </dt>
+    <dd>Do not strip leading slashes from file names.</dd>
+
+    <dt><code>--recursion</code></dt>
+    <dd>Recurse into directories (default).</dd>
+
+    <dt>
+      <code>--suffix</code>=<var>STRING</var>
+    </dt>
+    <dd>
+      Backup before removal, override default suffix.
+    </dd>
+
+    <dt>
+      <code>-T</code>, <code>--files-from</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Read file names to extract or create from <var>FILE</var>. Names are
+      normally LF-separated unless <code>--null</code> is used.
+    </dd>
+
+    <dt><code>--unquote</code></dt>
+    <dd>Unquote file or member names (default).</dd>
+
+    <dt><code>--verbatim-files-from</code></dt>
+    <dd>
+      Treat each line from file list as a literal file name.
+    </dd>
+
+    <dt>
+      <code>-X</code>, <code>--exclude-from</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Exclude files matching patterns listed in <var>FILE</var>.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>File name transformations</h3>
+
+  <dl>
+    <dt>
+      <code>--strip-components</code>=<var>NUMBER</var>
+    </dt>
+    <dd>
+      Strip <var>NUMBER</var> leading components from file names on extraction.
+    </dd>
+
+    <dt>
+      <code>--transform</code>=<var>EXPRESSION</var>,
+      <code>--xform</code>=<var>EXPRESSION</var>
+    </dt>
+    <dd>
+      Use sed replace <var>EXPRESSION</var> to transform file names.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>File name transformations</h3>
+
+  <dl>
+    <dt>
+      <code>--strip-components</code>=<var>NUMBER</var>
+    </dt>
+    <dd>
+      Strip <var>NUMBER</var> leading components from file names on extraction.
+    </dd>
+
+    <dt>
+      <code>--transform</code>=<var>EXPRESSION</var>,
+      <code>--xform</code>=<var>EXPRESSION</var>
+    </dt>
+    <dd>
+      Use sed replace <var>EXPRESSION</var> to transform file names.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>File name matching options</h3>
+
+  <p>
+    These options affect both exclude and include patterns.
+  </p>
+
+  <dl>
+    <dt><code>--anchored</code></dt>
+    <dd>Patterns match file name start.</dd>
+
+    <dt><code>--ignore-case</code></dt>
+    <dd>Ignore case.</dd>
+
+    <dt><code>--no-anchored</code></dt>
+    <dd>Patterns match after any <code>/</code> (default for exclusion).</dd>
+
+    <dt><code>--no-ignore-case</code></dt>
+    <dd>Case sensitive matching (default).</dd>
+
+    <dt><code>--no-wildcards</code></dt>
+    <dd>Verbatim string matching.</dd>
+
+    <dt><code>--no-wildcards-match-slash</code></dt>
+    <dd>Wildcards do not match <code>/</code>.</dd>
+
+    <dt><code>--wildcards</code></dt>
+    <dd>Use wildcards (default for exclusion).</dd>
+
+    <dt><code>--wildcards-match-slash</code></dt>
+    <dd>Wildcards match <code>/</code> (default for exclusion).</dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Informative output</h3>
+
+  <dl>
+    <dt>
+      <code>--checkpoint</code>[=<var>N</var>]
+    </dt>
+    <dd>
+      Display progress messages every <var>N</var>th record (default 10).
+    </dd>
+
+    <dt>
+      <code>--checkpoint-action</code>=<var>ACTION</var>
+    </dt>
+    <dd>
+      Run <var>ACTION</var> on each checkpoint.
+    </dd>
+
+    <dt>
+      <code>--clamp-mtime</code>
+    </dt>
+    <dd>
+      Only set time when the file is more recent than what was given with
+      <code>--mtime</code>.
+    </dd>
+
+    <dt>
+      <code>--full-time</code>
+    </dt>
+    <dd>
+      Print file time to its full resolution.
+    </dd>
+
+    <dt>
+      <code>--index-file</code>=<var>FILE</var>
+    </dt>
+    <dd>
+      Send verbose output to <var>FILE</var>.
+    </dd>
+
+    <dt>
+      <code>-l</code>, <code>--check-links</code>
+    </dt>
+    <dd>
+      Print a message if not all links are dumped.
+    </dd>
+
+    <dt>
+      <code>--no-quote-chars</code>=<var>STRING</var>
+    </dt>
+    <dd>
+      Disable quoting for characters from <var>STRING</var>.
+    </dd>
+
+    <dt>
+      <code>--quote-chars</code>=<var>STRING</var>
+    </dt>
+    <dd>
+      Additionally quote characters from <var>STRING</var>.
+    </dd>
+
+    <dt>
+      <code>--quoting-style</code>=<var>STYLE</var>
+    </dt>
+    <dd>
+      <p>
+        Set quoting style for file and member names.
+      </p>
+
+      <p>
+        Valid values:
+        <code>literal</code>,
+        <code>shell</code>,
+        <code>shell-always</code>,
+        <code>c</code>,
+        <code>c-maybe</code>,
+        <code>escape</code>,
+        <code>locale</code>,
+        <code>clocale</code>.
+      </p>
+    </dd>
+
+    <dt>
+      <code>-R</code>, <code>--block-number</code>
+    </dt>
+    <dd>
+      Show block number within archive with each message.
+    </dd>
+
+    <dt>
+      <code>--show-omitted-dirs</code>
+    </dt>
+    <dd>
+      When listing or extracting, list each directory that does not match
+      search criteria.
+    </dd>
+
+    <dt>
+      <code>--show-transformed-names</code>,
+      <code>--show-stored-names</code>
+    </dt>
+    <dd>
+      Show file or archive names after transformation by
+      <code>--strip</code> and <code>--transform</code> options.
+    </dd>
+
+    <dt>
+      <code>--totals</code>[=<var>SIGNAL</var>]
+    </dt>
+    <dd>
+      <p>
+        Print total bytes after processing the archive.
+      </p>
+
+      <p>
+        If <var>SIGNAL</var> is given, print total bytes when this signal
+        is delivered. Allowed signals:
+        <code>SIGHUP</code>, <code>SIGQUIT</code>, <code>SIGINT</code>,
+        <code>SIGUSR1</code>, <code>SIGUSR2</code>.
+        The <code>SIG</code> prefix can be omitted.
+      </p>
+    </dd>
+
+    <dt><code>--utc</code></dt>
+    <dd>Print file modification times in UTC.</dd>
+
+    <dt>
+      <code>-v</code>, <code>--verbose</code>
+    </dt>
+    <dd>
+      <p>
+        Verbosely list files processed.
+      </p>
+
+      <p>
+        Each instance increases verbosity level by one (maximum 3).
+      </p>
+
+      <p>
+        See GNU Tar Manual, subsection 2.5.1 for details.
+      </p>
+    </dd>
+
+    <dt>
+      <code>--warning</code>=<var>KEYWORD</var>
+    </dt>
+    <dd>
+      <p>
+        Enable or disable warning messages identified by <var>KEYWORD</var>.
+        Prefix with <code>no-</code> to disable.
+      </p>
+
+      <p>
+        Multiple <code>--warning</code> options accumulate.
+      </p>
+
+      <p><strong>General keywords:</strong></p>
+      <ul>
+        <li><code>all</code> — enable all warnings (default)</li>
+        <li><code>none</code> — disable all warnings</li>
+        <li><code>filename-with-nuls</code></li>
+        <li><code>alone-zero-block</code></li>
+      </ul>
+
+      <p><strong>Create-related keywords:</strong></p>
+      <ul>
+        <li><code>cachedir</code></li>
+        <li><code>file-shrank</code></li>
+        <li><code>xdev</code></li>
+        <li><code>file-ignored</code></li>
+        <li><code>file-unchanged</code></li>
+        <li><code>ignore-archive</code></li>
+        <li><code>file-removed</code></li>
+        <li><code>file-changed</code></li>
+        <li><code>failed-read</code></li>
+      </ul>
+
+      <p><strong>Extract-related keywords:</strong></p>
+      <ul>
+        <li><code>existing-file</code></li>
+        <li><code>timestamp</code></li>
+        <li><code>contiguous-cast</code></li>
+        <li><code>symlink-cast</code></li>
+        <li><code>unknown-cast</code></li>
+        <li><code>ignore-newer</code></li>
+        <li><code>unknown-keyword</code></li>
+        <li><code>decompress-program</code></li>
+        <li><code>record-size</code></li>
+      </ul>
+
+      <p><strong>Incremental extraction keywords:</strong></p>
+      <ul>
+        <li><code>rename-directory</code></li>
+        <li><code>new-directory</code></li>
+        <li><code>xdev</code></li>
+        <li><code>bad-dumpdir</code></li>
+      </ul>
+    </dd>
+
+    <dt>
+      <code>-w</code>, <code>--interactive</code>, <code>--confirmation</code>
+    </dt>
+    <dd>
+      Ask for confirmation for every action.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
+  <h3>Compatibility options</h3>
+
+  <dl>
+    <dt><code>-o</code></dt>
+    <dd>
+      When creating, same as <code>--old-archive</code>. When extracting,
+      same as <code>--no-same-owner</code>.
+    </dd>
+  </dl>
+</section>
+<section class="indented">
     <h3>Size suffixes</h3>
     <table>
   <thead>
@@ -800,9 +2019,9 @@
 </table>
 
 
-  </section>
+</section>
 
-  </section>
+</section>
 
   <section>
     <h2>RETURN VALUE</h2>
@@ -837,10 +2056,54 @@
       </pre>
   </section>
 
+  <section>
   <h2>SEE ALSO</h2>
-  <p class="intended">
-    <code>gzip</code>, <code>bzip2</code>, <code>xz</code>
+  <ul class="inline-comma">
+    <li><code>bzip2(1)</code></li>
+    <li><code>compress(1)</code></li>
+    <li><code>gzip(1)</code></li>
+    <li><code>lzma(1)</code></li>
+    <li><code>lzop(1)</code></li>
+    <li><code>rmt(8)</code></li>
+    <li><code>symlink(7)</code></li>
+    <li><code>xz(1)</code></li>
+    <li><code>zstd(1)</code></li>
+  </ul>
+
+  <p>
+    Complete tar manual: run <code>info tar</code> or use <code>emacs(1)</code> info mode to read it.
   </p>
+
+  <p>
+    Online copies of GNU tar documentation in various formats can be found at:
+  </p>
+
+  <pre class="indented">
+    <code>http://www.gnu.org/software/tar/manual</code>
+  </pre>
+</section>
+
+<section>
+  <h2>BUG REPORTS</h2>
+  <p>
+    Report bugs to <code>&lt;bug-tar@gnu.org&gt;</code>.
+  </p>
+</section>
+
+<section>
+  <h2>COPYRIGHT</h2>
+  <p>
+    Copyright © 2013-2019 Free Software Foundation, Inc.
+  </p>
+  <p>
+    License GPLv3+: GNU GPL version 3 or later
+    <code>http://gnu.org/licenses/gpl.html</code>
+  </p>
+  <p>
+    This is free software: you are free to change and redistribute it.
+    There is NO WARRANTY, to the extent permitted by law.
+  </p>
+</section>
 </article>
 
   </main>

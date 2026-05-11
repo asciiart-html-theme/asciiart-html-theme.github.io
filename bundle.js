@@ -1,7 +1,7 @@
 (() => {
   // dist/js/asciiart.esm.min.js
-  function r(o) {
-    return o instanceof HTMLElement ? o : typeof o == "string" ? o.startsWith("#") ? document.getElementById(o.slice(1)) : document.querySelector(o) : null;
+  function r(i) {
+    return i instanceof HTMLElement ? i : typeof i == "string" ? i.startsWith("#") ? document.getElementById(i.slice(1)) : document.querySelector(i) : null;
   }
   var s = class {
     constructor(e) {
@@ -10,18 +10,18 @@
       }));
     }
     toggleMenu(e) {
-      let t = e.nextElementSibling, i = e.parentNode, u = t.checkVisibility() ? "false" : "true";
-      i.dataset.visible = u;
+      let t = e.nextElementSibling, o = e.parentNode, u = t.checkVisibility() ? "false" : "true";
+      o.dataset.visible = u;
     }
   };
-  var l = class {
+  var a = class {
     constructor(e) {
-      this.sidebar = r(e), this.breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue("--md-width"), this.breakpoint || (this.breakpoint = 1700), this.breakpoint = parseInt(this.breakpoint), this.init();
+      this.sidebar = r(e), this.breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue("--md-width"), this.breakpoint || (this.breakpoint = 1700), this.breakpoint = parseInt(this.breakpoint), this.button_selector = (t) => `button[aria-controls="#${t}"], button[aria-controls="${t}"]`, this.init();
     }
     init() {
       window.addEventListener("resize", () => this.handleResize());
       let e = this.sidebar.id;
-      e && document.querySelectorAll('button[data-control-element="#' + e + '"').forEach((t) => {
+      e && document.querySelectorAll(this.button_selector(e)).forEach((t) => {
         if (t.classList.contains("button-close")) {
           t.addEventListener("click", () => this.hide(t));
           return;
@@ -37,44 +37,44 @@
       this.sidebar.dataset.visible = false, this.updateButtons();
     }
     handleResize() {
-      window.innerWidth > this.breakpoint && (this.sidebar.removeAttribute("data-visible"), this.updateButtons());
+      window.innerWidth > this.breakpoint && (this.sidebar.removeAttribute("data-visible"), this.sidebar.removeAttribute("aria-expanded"), this.updateButtons());
     }
     updateButtons() {
       let e = this.sidebar.id;
-      e && document.querySelectorAll('button[data-control-element="#' + e + '"').forEach((t) => {
-        t.dataset.elementHidden = !this.sidebar.checkVisibility();
+      e && document.querySelectorAll(this.button_selector(e)).forEach((t) => {
+        t.dataset.elementHidden = !this.sidebar.checkVisibility(), t.setAttribute("aria-expanded", this.sidebar.checkVisibility());
       });
     }
   };
-  var p = l;
+  var h = a;
   var n = class {
     constructor(e) {
       this.wrapperElement = r(e), Array.from(this.wrapperElement.children).forEach((t) => {
         t.addEventListener("click", () => this.select(t));
-        let i = r(t.getAttribute("aria-controls"));
-        if (!i) {
-          console.error("No element to controll skipping");
+        let o = document.getElementById(t.getAttribute("aria-controls"));
+        if (!o) {
+          console.error("No element to control skipping");
           return;
         }
         if (t.getAttribute("aria-selected") == "true") {
-          i.hidden = false;
+          o.hidden = false;
           return;
         }
-        i.hidden = true;
+        o.hidden = true;
       });
     }
     select(e) {
       Array.from(this.wrapperElement.children).forEach((t) => {
-        let i = r(t.getAttribute("aria-controls"));
-        if (console.log("Controlling Element", i), !i) {
+        let o = document.getElementById(t.getAttribute("aria-controls"));
+        if (console.log("Controlling Element", o), !o) {
           console.error("No element to controll skipping");
           return;
         }
         if (t === e) {
-          console.log("Switching Element", i), i.hidden = false, t.setAttribute("aria-selected", "true");
+          console.log("Switching Element", o), o.hidden = false, t.setAttribute("aria-selected", "true");
           return;
         }
-        i.hidden = true, t.setAttribute("aria-selected", "false");
+        o.hidden = true, t.setAttribute("aria-selected", "false");
       });
     }
   };
@@ -90,8 +90,8 @@
       let t = e.innerText.trim();
       navigator.clipboard.writeText(t).then(() => {
         console.log("Code copied to clipboard!"), this.copyButton.innerText = "Copied!", setTimeout(() => this.copyButton.innerText = "Copy", 2e3);
-      }).catch((i) => {
-        console.error("Failed to copy code: ", i);
+      }).catch((o) => {
+        console.error("Failed to copy code: ", o);
       });
     }
   };
@@ -99,7 +99,7 @@
   // src/demo/main.js
   document.addEventListener("DOMContentLoaded", () => {
     new s(".treemenu");
-    new p("#sidebar");
+    new h("#sidebar");
     new c("#codewrapper");
   });
 })();

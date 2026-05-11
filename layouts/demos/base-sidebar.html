@@ -7,8 +7,8 @@
 
   <!-- SCSS compiled CSS -->
   <link rel="stylesheet" href="/css/style.css">
-  <script type="application/javascript" src="/js/asciiart.min.js"></script>
-  <script type="application/javascript">
+  <script src="/js/asciiart.min.js"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       new AsciiartTheme.Sidebar("#sidebar");
     });      
@@ -19,9 +19,9 @@
 </head>
 <body>
   <div class="top-left-responsive">
-     <button role="button" 
+     <button 
         class="button-expand button-toggle" 
-        data-control-element="#sidebar"
+        aria-controls="#sidebar"
       ></button>
   </div>
 
@@ -54,7 +54,7 @@
 
   <div class="sidebar-layout">
     <div class="aside-wrapper" id="sidebar">
-      <button class="button-close" data-control-element="#sidebar"></button>
+      <button class="button-close" aria-controls="#sidebar"></button>
       <aside>
         <nav aria-label="Sidebar navigation">
             
