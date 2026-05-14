@@ -723,7 +723,7 @@ button::before {
 button::after {
   content: "]";
 }
-button::hover {
+button:hover {
   background-color: var(--color-hover-bg);
   color: var(--color-hover-fe);
 }
@@ -743,7 +743,7 @@ a.button::before {
 a.button::after {
   content: "]";
 }
-a.button::hover {
+a.button:hover {
   background-color: var(--color-hover-bg);
   color: var(--color-hover-fe);
 }
@@ -757,7 +757,7 @@ a.button {
   margin: 0px;
 }
 
-.button-toggle[data-element-hidden=true]::after {
+.button-toggle[aria-expanded=false]::after {
   content: ">" !important;
 }
 .button-toggle::after {
@@ -767,7 +767,7 @@ a.button {
   content: "";
 }
 @media screen and (max-width: 700px) {
-  .button-toggle[data-element-hidden=true]::after {
+  .button-toggle[aria-expanded=false]::after {
     content: "+" !important;
   }
   .button-toggle::after {
@@ -919,6 +919,24 @@ a.button {
 }
 .tab-button-container {
   display: flex;
+  overflow-x: scroll;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+}
+.tab-button-container::-webkit-scrollbar {
+  display: none;
+}
+.tab-button-container {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.tab-button-container button {
+  flex-shrink: 0; /* Prevents buttons from shrinking to fit */
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid var(--color-fe);
+  padding: 5px 10px;
+  cursor: pointer;
 }
 .tab-button-container button[aria-selected=true]::before {
   content: ">";
@@ -931,6 +949,25 @@ a.button {
 }
 .tab-button-container button:hover::after {
   content: "<]";
+}
+
+.scrolltab {
+  display: flex;
+}
+.scrolltab .scroll-btn {
+  background-color: var(--color-fe);
+}
+.scrolltab .scroll-btn.before::before {
+  content: "<";
+}
+.scrolltab .scroll-btn.before::after {
+  content: "";
+}
+.scrolltab .scroll-btn.after::before {
+  content: ">";
+}
+.scrolltab .scroll-btn.after::after {
+  content: "";
 }
 
 .code-wrapper {
@@ -983,6 +1020,8 @@ a.button {
   flex-shrink: 10;
   gap: 5px;
   align-items: center;
+  overflow-x: scroll;
+  flex-grow: 1;
 }
 .code-wrapper div .tab-button-container button {
   background: transparent;
@@ -1014,6 +1053,28 @@ a.button {
   max-height: 1000px;
   overflow-y: scroll;
   margin: 1px;
+}
+
+.scrolltab {
+  width: auto;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+.scrolltab .scroll-btn {
+  background-color: var(--color-fe);
+}
+.scrolltab .scroll-btn.before::before {
+  content: "<";
+}
+.scrolltab .scroll-btn.before::after {
+  content: "";
+}
+.scrolltab .scroll-btn.after::before {
+  content: ">";
+}
+.scrolltab .scroll-btn.after::after {
+  content: "";
 }
 
 ul.inline-comma li {

@@ -3,18 +3,18 @@
   function r(i) {
     return i instanceof HTMLElement ? i : typeof i == "string" ? i.startsWith("#") ? document.getElementById(i.slice(1)) : document.querySelector(i) : null;
   }
-  var s = class {
+  var c = class {
     constructor(e) {
       this.root = r(e), this.root && (this.buttons = this.root.querySelectorAll("li > button"), this.buttons.forEach((t) => {
         t.addEventListener("click", () => this.toggleMenu(t));
       }));
     }
     toggleMenu(e) {
-      let t = e.nextElementSibling, o = e.parentNode, u = t.checkVisibility() ? "false" : "true";
-      o.dataset.visible = u;
+      let t = e.nextElementSibling, o = e.parentNode, s = t.checkVisibility() ? "false" : "true";
+      o.dataset.visible = s;
     }
   };
-  var a = class {
+  var d = class {
     constructor(e) {
       this.sidebar = r(e), this.breakpoint = window.getComputedStyle(document.documentElement).getPropertyValue("--md-width"), this.breakpoint || (this.breakpoint = 1700), this.breakpoint = parseInt(this.breakpoint), this.button_selector = (t) => `button[aria-controls="#${t}"], button[aria-controls="${t}"]`, this.init();
     }
@@ -42,12 +42,31 @@
     updateButtons() {
       let e = this.sidebar.id;
       e && document.querySelectorAll(this.button_selector(e)).forEach((t) => {
-        t.dataset.elementHidden = !this.sidebar.checkVisibility(), t.setAttribute("aria-expanded", this.sidebar.checkVisibility());
+        t.setAttribute("aria-expanded", this.sidebar.checkVisibility());
       });
     }
   };
-  var h = a;
+  var p = d;
   var n = class {
+    constructor(e, t) {
+      this.wrapperElement = r(e), this.targetElement = r(t);
+      let o = 100;
+      console.log(this.wrapperElement), this.scrollButtons = this.wrapperElement.querySelectorAll(".scroll-btn"), this.scrollButtons.forEach((s) => {
+        s.addEventListener("click", () => {
+          console.log(s), s.classList.contains("before") ? this.targetElement.scrollLeft -= o : this.targetElement.scrollLeft += o;
+        });
+      }), window.addEventListener("resize", () => {
+        this.updateButtons();
+      }), this.updateButtons();
+    }
+    updateButtons() {
+      let e = this.targetElement.scrollWidth > this.targetElement.clientWidth;
+      console.log("Overflow", e), this.scrollButtons.forEach((t) => {
+        e ? t.style.display = "" : t.style.display = "none";
+      });
+    }
+  };
+  var l = class {
     constructor(e) {
       this.wrapperElement = r(e), Array.from(this.wrapperElement.children).forEach((t) => {
         t.addEventListener("click", () => this.select(t));
@@ -61,7 +80,11 @@
           return;
         }
         o.hidden = true;
-      });
+      }), this.initScroll();
+    }
+    initScroll() {
+      let e = this.wrapperElement.parentElement;
+      e.classList.contains("scrolltab") && (this.scrollContainer = new n(e, this.wrapperElement));
     }
     select(e) {
       Array.from(this.wrapperElement.children).forEach((t) => {
@@ -78,11 +101,11 @@
       });
     }
   };
-  var c = class {
+  var a = class {
     constructor(e) {
       this.wrapperElement = r(e), this.copyButton = this.wrapperElement.querySelector(".copy"), this.copyButton && this.copyButton.addEventListener("click", () => this.copyCodeIntoClipboard());
       let t = this.wrapperElement.querySelector(".tab-button-container");
-      t && (console.debug("Init tab", t), this.tabSelector = new n(t));
+      t && (console.debug("Init tab", t), this.tabSelector = new l(t));
     }
     copyCodeIntoClipboard() {
       let e = this.wrapperElement.querySelector("code");
@@ -98,9 +121,9 @@
 
   // src/demo/main.js
   document.addEventListener("DOMContentLoaded", () => {
-    new s(".treemenu");
-    new h("#sidebar");
-    new c("#codewrapper");
+    new c(".treemenu");
+    new p("#sidebar");
+    new a("#codewrapper");
   });
 })();
 //# sourceMappingURL=bundle.js.map

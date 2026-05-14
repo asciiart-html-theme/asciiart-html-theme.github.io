@@ -568,6 +568,25 @@
         </div>
     </article>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section id="codewrapper">
     <h1>CodeWrapper</h1>
     <article id="codewrapper-basic">
@@ -578,21 +597,17 @@
             <span>HTML</span>
             <button class="copy">COPY</button>
         </div>
-        <pre>
-            <code>
-&lt;div class="code-wrapper"&gt;
+        <pre><code>&lt;div class=&quot;code-wrapper&quot;&gt;
     &lt;div&gt;
         &lt;span&gt;HTML&lt;/span&gt;
-        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+        &lt;button class=&quot;copy&quot;&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
     &lt;pre&gt;
         &lt;code&gt;
             Piece of code here            
         &lt;/code&gt;
     &lt;/pre&gt;
-&lt;/div&gt;
-            </code>
-        </pre>
+&lt;/div&gt;</code></pre>
     </div>
     <p>The component also need to initialize the copy buttons, both js and esm supported:</p>
     <div class="code-wrapper">
@@ -604,26 +619,19 @@
             </div>
             <button class="copy">COPY</button>
         </div>
-        <pre id="codewrapper-init-esm">
-            <code>
-&lt;script type=\"module\"&gt;
-    import { autoinit } from "/js/asciiart.esm.js"; 
-    document.addEventListener("DOMContentLoaded",function(){
+        <pre id="codewrapper-init-esm">&lt;script type=&quot;module&quot;&gt;
+    import { autoinit } from &quot;/js/asciiart.esm.js&quot;; 
+
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
         autoinit.codewrapper()
     })
-&lt;/script&gt;
-            </code>
-        </pre>
-        <pre id="codewrapper-init-js">
-            <code>
-&lt;script type="application/javascript" src="/js/asciiart.min.js&gt;&lt;/script&gt;
+&lt;/script&gt;</code></pre>
+        <pre id="codewrapper-init-js"><code>&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
-    document.addEventListener("DOMContentLoaded",function(){
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
         AsciiartTheme.autoinit.codewrapper()
     })
-&lt;/script&gt;
-            </code>
-        </pre>
+&lt;/script&gt;</code></pre>
     </div>
 
     <p>Otherwise you can use the <code>CodeWrapper</code> class, ideal for a single element, both js and esm supported:</p>
@@ -636,26 +644,19 @@
             </div>
             <button class="copy">COPY</button>
         </div>
-        <pre id="codewrapper-class-esm" class="tab-code">
-            <code>
-&lt;script type=\"module\"&gt;
-    import { CodeWrapper } from "/js/asciiart.esm.js"; 
-    document.addEventListener("DOMContentLoaded",function(){
-        new CodeWrapper("#mycontainer")
+        <pre id="codewrapper-class-esm" class="tab-code"><code>&lt;script type=&quot;module&quot;&gt;
+    import { CodeWrapper } from &quot;/js/asciiart.esm.js&quot;; 
+
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+        new CodeWrapper(&quot;#mycontainer&quot;)
     })
-&lt;/script&gt;
-            </code>
-        </pre>
-        <pre id="codewrapper-class-js" class="tab-code">
-            <code>
-&lt;script type="application/javascript" src="/js/asciiart.min.js"&gt;&lt;/script&gt;
+&lt;/script&gt;</code></pre>
+        <pre id="codewrapper-class-js" class="tab-code"><code>&lt;script type=&quot;application/javascript&quot; src=&quot;/js/asciiart.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
-    document.addEventListener("DOMContentLoaded",function(){
-        new AsciiartTheme.CodeWrapper("#mycontainer")
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+        new AsciiartTheme.CodeWrapper(&quot;#mycontainer&quot;)
     })
-&lt;/script&gt;
-            </code>
-        </pre>
+&lt;/script&gt; </code></pre>
     </div>
     
 </article>
@@ -667,31 +668,88 @@
                 <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
-        <pre>
-            <code>
-&lt;div class="code-wrapper"&gt;
+        <pre><code>&lt;div class=&quot;code-wrapper&quot;&gt;
     &lt;div&gt;
         &lt;span&gt;Installation Instructions&lt;/span&gt;
-        &lt;div role="tablist" class="tab-button-container"&gt;
-                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="windows">Windows&lt;/button&gt;
-                &lt;button class="btn-tab" role="tab" aria-controls="linux">Linux&lt;/button&gt;
+
+        &lt;div role=&quot;tablist&quot; class=&quot;tab-button-container&quot;&gt;
+            &lt;button class=&quot;btn-tab&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; aria-controls=&quot;windows&quot;&gt;Windows&lt;/button&gt;
+            &lt;button class=&quot;btn-tab&quot; role=&quot;tab&quot; aria-controls=&quot;linux&quot;&gt;Linux&lt;/button&gt;
         &lt;/div&gt;
-        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+
+        &lt;button class=&quot;copy&quot;&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
-    &lt;pre id="windows"&gt;
+
+    &lt;pre id=&quot;windows&quot;&gt;
         &lt;code&gt;
             windows installation            
         &lt;/code&gt;
     &lt;/pre&gt;
-    &lt;pre id="linux"&gt;
+
+    &lt;pre id=&quot;linux&quot;&gt;
         &lt;code&gt;
             linux installation            
         &lt;/code&gt;
     &lt;/pre&gt;
-&lt;/div&gt;
-            </code>
-        </pre>
+&lt;/div&gt;</code></pre>
     </div>
+
+     <p>Also codewrapper can contain multiple tabs as well. In that case left and right scroll button appear:</p>
+
+        <div class="code-wrapper">
+                <div>
+                    <div class="scrolltab">
+                        <button class="scroll-btn before"></button>
+                        <div class="tab-button-container" >
+                            <button class="btn-tab" role="tab" aria-selected="true" aria-controls="ubuntu">Ubuntu/Mint</button>
+                            <button class="btn-tab" role="tab" aria-controls="fedora">Fedora</button>
+                            <button class="btn-tab" role="tab" aria-controls="amazon-linux">Amazon Linux 2023</button>
+                            <button class="btn-tab" role="tab" aria-controls="opensuse">OpenSuse</button>
+                            <button class="btn-tab" role="tab" aria-controls="alpine">Alpine</button>
+                            <button class="btn-tab" role="tab" aria-controls="static-binaries">Static Binaries</button>
+                            <button class="btn-tab" role="tab" aria-controls="static-binaries-no-root">Static Binaries (No Root)</button>
+                        </div>
+                        <button class="scroll-btn after"></button>
+                    </div>
+                    <button class="copy" >COPY</button>
+                </div>
+<pre id="ubuntu" class="tab-code" ><code>
+sudo add-apt-repository ppa:pcmagas/mkdotenv
+sudo apt-get update
+sudo apt-get install mkdotenv</code></pre>
+<pre id="fedora" class="tab-code" ><code>
+sudo dnf install dnf-plugins-core
+dnf copr enable pc-magas/mkdotenv 
+sudo dnf install mkdotenv</code></pre>
+<pre id="amazon-linux" class="tab-code" ><code>
+sudo dnf install -y 'dnf-command(copr)'
+sudo dnf copr enable pc-magas/mkdotenv 
+sudo dnf install -y mkdotenv</code></pre>
+<pre id="opensuse" class="tab-code" ><code>
+sudo zypper install opi
+opi copr pc-magas/mkdotenv
+sudo zypper install mkdotenv</code></pre>
+<pre id="alpine" class="tab-code"><code>
+wget https://github.com/pc-magas/mkdotenv/releases/download/v/mkdotenv--r0.apk
+apk add mkdotenv--r0.apk
+            </code></pre>
+<pre id="static-binaries" class="tab-code"><code>
+export VERSION=v
+wget -o mkdotenv https://github.com/pc-magas/mkdotenv/releases/download/${VERSION}/mkdotenv-linux-amd64 
+sudo cp mkdotenv-linux-amd64  /bin/mkdotenv
+sudo chmod 755 /bin/mkdotenv
+
+mkdotenv --version
+</code></pre>
+<pre id="static-binaries-no-root" class="tab-code"><code>
+export VERSION=v
+wget -o mkdotenv https://github.com/pc-magas/mkdotenv/releases/download/${VERSION}/mkdotenv-linux-amd64 
+cp mkdotenv-linux-amd64  ~/.local/bin/mkdotenv
+chmod 755 ~/.local/bin/mkdotenv
+
+mkdotenv --version
+</code></pre>
+        </div>
 
 <p>Tabs can lead the title as well:</p>
     <div class="code-wrapper">
@@ -699,30 +757,30 @@
             <span>HTML</span>
             <button class="copy">COPY</button>
         </div>
-        <pre>
-            <code>
-&lt;div class="code-wrapper"&gt;
+        <pre><code>&lt;div class=&quot;code-wrapper&quot;&gt;
     &lt;div&gt;
-        &lt;div class="tab-button-container"&gt;
-                &lt;button class="btn-tab" role="tab" aria-selected="true" aria-controls="windows">Windows&lt;/button&gt;
-                &lt;button class="btn-tab" role="tab" aria-controls="linux">Linux&lt;/button&gt;
+        &lt;div class=&quot;tab-button-container&quot;&gt;
+            &lt;button class=&quot;btn-tab&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; aria-controls=&quot;windows&quot;&gt;Windows&lt;/button&gt;
+            &lt;button class=&quot;btn-tab&quot; role=&quot;tab&quot; aria-controls=&quot;linux&quot;&gt;Linux&lt;/button&gt;
         &lt;/div&gt;
+
         &lt;span&gt;Installation Instructions&lt;/span&gt;
-        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+
+        &lt;button class=&quot;copy&quot;&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
-    &lt;pre id="windows"&gt;
+
+    &lt;pre id=&quot;windows&quot;&gt;
         &lt;code&gt;
             windows installation            
         &lt;/code&gt;
     &lt;/pre&gt;
-    &lt;pre id="linux"&gt;
+
+    &lt;pre id=&quot;linux&quot;&gt;
         &lt;code&gt;
             linux installation            
         &lt;/code&gt;
     &lt;/pre&gt;
-&lt;/div&gt;
-            </code>
-        </pre>
+&lt;/div&gt;</code></pre>
     </div>
 </article>
 <article id="#codewrapper-links">
@@ -733,22 +791,20 @@
                 <span>HTML</span>
                 <button class="copy">COPY</button>
             </div>
-            <pre><code>
-&lt;div class="code-wrapper"&gt;
+            <pre><code>&lt;div class=&quot;code-wrapper&quot;&gt;
     &lt;div&gt;
         &lt;span&gt;Demo&lt;/span&gt;
-        &lt;a href="#"&gt;Preview&lt;a&gt;
-        &lt;button class="copy"&gt;COPY&lt;/button&gt;
+        &lt;a href=&quot;#&quot;&gt;Preview&lt;/a&gt;
+        &lt;button class=&quot;copy&quot;&gt;COPY&lt;/button&gt;
     &lt;/div&gt;
+
     &lt;pre&gt;
         &lt;code&gt;
             soime code here....  
         &lt;/code&gt;
     &lt;/pre&gt;
-&lt;/div&gt;
-            </code></pre>
+&lt;/div&gt;</code></pre>
         </div>
-    
 </article>
 </section>
 
